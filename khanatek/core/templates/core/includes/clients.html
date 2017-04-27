@@ -1,0 +1,17 @@
+{% load khanatek_tags wagtailcore_tags wagtailimages_tags %}
+
+{% if clients %}
+	<div class="row">
+	    {% for client in clients %}
+	        <div class="col-md-3 mb-r wow fadeInDown">
+	            {% if client.link %}<a href="{{ client.link }}">{% endif %}
+	                {% image client.image max-250x80 %}
+	            {% if client.link %}</a>{% endif %}
+	        </div>
+	    {% endfor %}
+	</div>
+<br>
+<br>
+
+		<button type="button" class="btn btn-outline-info waves-effect">Show more</button>
+{% endif %}

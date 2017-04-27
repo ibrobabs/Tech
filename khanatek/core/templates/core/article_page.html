@@ -1,0 +1,119 @@
+{% extends "core/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags khanatek_tags %}
+
+
+{% block content %}
+<main>
+        <div class="container-fluid">
+        <!--Section: Blog v.4-->
+            <section class="section section-blog-fw" style="margin-top: 20px;">
+
+                <!--First row-->
+                <div class="row">
+                    <div class="col-md-10 offset-md-1 wow fadeIn" data-wow-delay="0.2s">
+
+                    {% image page.main_image fill-1076x475 as main_image %}
+                        <!--Featured image-->
+                        <img src="{{ main_image.url }}">
+
+                        <!--Post data-->
+                                <div class="jumbotron wow fadeIn" data-wow-delay="0.4s">
+                                    <h2 class="{% if self.title|length >= 30 %}long-title{% endif %}">{{ self.title }}</h2>
+                                    <p>Written by {% for author in post.related_author.all %}
+                                <a><strong>{{ author.author.title }}{% if not forloop.last %},&nbsp;{% endif %}</strong></a>{% endfor %}, {% if self.date %}{{ self.date|date:"j F Y" }}{% endif %}</p>
+                                </div>
+                                        <div class="post-text">
+
+                                            {% include "core/includes/stream.html" %}
+                                            
+                                        </div>
+                                        <!--/Post text-->
+                                        <hr>
+
+                            <section class="mb-4">
+                                <!--Author box-->
+                            {% with self.related_author.all as authors %}
+                                {% if authors %}
+                                <div class="author-box">
+                                    <!--Name-->
+                                    <h3 class="h3-responsive text-center">About author</h3>
+                                    <hr>
+                                    {% for author in authors %}
+                                    <div class="row">
+                                        <!--Avatar-->
+                                        <div class="col-12 col-sm-2">
+                                        {% if author.author.image %}
+                                            {% image author.author.image fill-300x300 as photo %}
+
+                                            <img src="{{ photo.url }}"  width="{{ photo.width }}" height="{{ photo.height }}" class="img-fluid rounded-circle z-depth-2">
+                                        {% endif %}
+                                        </div>
+                                        <!--Author Data-->
+                                        <div class=" col-12 col-sm-10">
+                                        {% if author.author %}<p><strong><a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a></strong></p>{% endif %}
+        <!--                                     <div class="personal-sm">
+                                                <a class="email-ic"><i class="fa fa-home"> </i></a>
+                                                <a class="fb-ic"><i class="fa fa-facebook"> </i></a>
+                                                <a class="tw-ic"><i class="fa fa-twitter"> </i></a>
+                                                <a class="gplus-ic"><i class="fa fa-google-plus"> </i></a>
+                                                <a class="li-ic"><i class="fa fa-linkedin"> </i></a>
+                                                <a class="email-ic"><i class="fa fa-envelope-o"> </i></a>
+                                            </div> -->
+                                            <p> {% if author.author.role %}
+                                                <span class="role">{{ author.author.role }}</span>
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                                <!--/.Author box-->
+                            {% endwith %}
+                            </section>
+                            <!--/Section: About author-->
+                            {% with self.tags.all as tags %}
+                            {% if tags %}
+                                <div class="tags">
+                                    <h4>tags</h4>
+                                    <ul>
+                                    {% for tag in tags %}
+                                        <li>
+                                            <a href="{% pageurl self.article_index %}?tag={{ tag.tag.slug }}">{{ tag.tag }}</a>
+                                        </li>
+                                    {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                            {% endwith %}
+                        </div>
+                    </div>
+            </section>
+            <!--Section: About author-->               
+        </div>
+
+    {% get_next_sibling_article self as next_page %}
+        {% if next_page %}
+            <div class="nextprev-nav">
+                <a href="{% pageurl next_page %}">
+                    {% image next_page.feed_image original as image %}
+                    <div class="next {{ next_page.homepage_color }}"{% if not next_page.homepage_color and image %} style='background-image: url({{ image.url }});'{% endif %}>
+                        <div class="container">
+                            <div class="content">
+                                <h2>{{ next_page.title }}</h2>
+                                {% with next_page.related_author.all as authors %}
+                                    {% for author in authors %}
+                                        {% if author.author %}
+                                            <p class="author">{{ author.author.title }}</p>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endwith %}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endif %}
+
+</main>
+{% endblock %}

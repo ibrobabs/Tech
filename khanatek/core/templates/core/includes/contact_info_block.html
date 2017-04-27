@@ -1,0 +1,19 @@
+<div class="contact">
+    <div class="container">
+        <h2><span>Contact us</span> about your exciting upcoming project</h2>
+        <ul>
+            <li>
+                <a href="tel:{{ settings.khanatek.GlobalSettings.contact_telephone }}">
+                    {% include "core/includes/svg/phone.svg" %}
+                    <span>{{ settings.khanatek.GlobalSettings.contact_telephone }}</span>
+                </a>
+            </li>
+            <li>
+                <a href="mailto:{{ settings.khanatek.GlobalSettings.contact_email }}">
+                    {% include "core/includes/svg/envelope.svg" %}
+                    <span>{{ settings.khanatek.GlobalSettings.contact_email }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

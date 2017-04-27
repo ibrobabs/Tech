@@ -1,0 +1,17 @@
+<div {% if post.colour %} class="{{ post.colour }}"{% endif %}>
+    <a class="block-link" href="{% pageurl post %}">
+    <!--First column--></a>
+</div>
+
+
+{% for block in self.agenda %}
+    {% if block.block_type == 'agenda_item' %} {# will always be true, but included here for clarity #}
+        {% for subblock in block.value %}
+            {% if subblock.block_type == 'item_title' %}
+                <h2>{{ subblock.value }}</h2>
+            {% elif subblock.block_type == 'item_content' %}
+                rendering for item_content...
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}

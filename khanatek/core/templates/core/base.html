@@ -1,0 +1,175 @@
+{% load khanatek_tags cache static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    
+    <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% with self.get_site.site_name as site_name %}{% if site_name %}- {{ site_name }}{% endif %}{% endwith %}{% endblock %}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <meta name="description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}">
+        
+    {% if self.canonical_url %}
+        <link rel="canonical" href="{{ self.canonical_url }}" />
+    {% endif %}
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | khanatek">
+    <meta name="twitter:description" content="{% if self.intro %}{{ self.intro|striptags }}{% elif self.search_description %}{{ self.search_description }}{% endif %}">
+    <meta name="twitter:image:src" content="http://{{ request.site.hostname }}{% if self.feed_image %}{% image self.feed_image width-400 as img %}{{ img.url }}{% else %}{% static "khanatek/images/about-placeholder6.jpg" %}{% endif %}" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://{{ request.site.hostname }}{{ self.url }}" />
+    <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | khanatek" />
+    <meta property="og:image" content="http://{{ request.site.hostname }}{% if self.feed_image %}{% image self.feed_image width-1024 as img %}{{ img.url }}{% else %}{% static "khanatek/images/about-placeholder6.jpg" %}{% endif %}" />
+    <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}" />
+    <meta property="og:site_name" content="khanatek" />
+
+    <link rel="shortcut icon" href="{% static "khanatek/images/favicon.ico" %}" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/mdb.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+
+    <!-- Khanatek Custom CSS -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/khanatek.css' %}">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/new.css' %}"> -->
+
+    {% block extra_css %}{% endblock %}
+
+</head>
+    <body class="page-{{ self|content_type }} title-{{ self.title|slugify }} pageid-{{ self.id }} {% block body_class %}{% endblock %}">
+
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL5SH5B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WL5SH5B');</script>
+    <!-- End Google Tag Manager -->
+
+        {% wagtailuserbar %}
+        <!--Navigation & Intro-->
+    <header class="header">
+        <!--Navbar-->
+    <nav class="navbar navbar-toggleable-md fixed-top navbar-dark bg-faded scrolling-navbar">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav2" aria-controls="navbarNav2" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--Navbar Brand-->
+            <a class="navbar-brand waves-effect waves-light" href="/" class="logo">
+                
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav2">
+                <ul class="navbar-nav mr-auto bleed out-animation">
+                    {% main_menu as menu %}
+                    {% for block in menu.menu %}
+                        {% include_block block %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+        <!--/.Navbar-->
+    <header>
+
+    <main>{% spaceless %}{% block content %}{% endblock %}{% endspaceless %}</main>
+
+    <!--Footer-->
+    <footer class="page-footer center-on-small-only">
+
+        <!--Footer Links-->
+        <div class="container-fluid">
+            <div class="row">
+
+                <!--First column-->
+                <div class="col-md-3 offset-md-1">
+                <!-- {% include "core/includes/contact_info_block.html" %} -->
+                </div>
+                <!--/.First column-->
+
+                <hr class="hidden-md-up">
+
+                <!--Second column-->
+                <div class="col-md-5 offset-md-1">
+                    <!-- <ul>
+                        <li><a class="nav-link waves-effect waves-light active" href="{{ value.page.url }}"{% if value.page.url in request.path %}{% endif %}>{{ value.page.title }}</a>{% for block in menu.menu %}
+                        {% include_block block %}
+                    {% endfor %}</li> -->
+                        <div><a href="/privacy-policy/">Privacy/terms or use</a></div>
+                    <!-- </ul> -->
+                </div>
+                <!--/.Second column-->
+
+                <hr class="hidden-md-up">
+
+                <!--Third column-->
+                <!-- <div class="col-md-5">
+                    {% include "core/contact.html" %}
+                </div> -->
+                <!--/.Third column-->
+
+            </div>
+        </div>
+        <!-- /.Footer Links -->
+
+        <!-- <hr> -->
+
+        <!--Social buttons-->
+        <!-- <div class="social-section">
+            <ul>
+                <li><a class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a></li>
+                <li><a class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
+                <li><a class="btn-floating btn-small btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
+                <li><a class="btn-floating btn-small btn-li"><i class="fa fa-linkedin"> </i></a></li>
+                <li><a class="btn-floating btn-small btn-git"><i class="fa fa-github"> </i></a></li>
+                <li><a class="btn-floating btn-small btn-pin"><i class="fa fa-pinterest"> </i></a></li>
+                <li><a class="btn-floating btn-small btn-ins"><i class="fa fa-instagram"> </i></a></li>
+            </ul>
+        </div>
+ -->        <!--/.Social buttons-->
+
+        <!--Copyright-->
+        <div class="footer-copyright">
+            <div class="container-fluid">
+                © 2017 Copyright: <a href="http://www.khanatek.com"> Khanatek Technologies Inc </a>
+            </div>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+    {# Global javascript #}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{% static 'khanatek/vendor/js/tether.min.js' %}"></script>
+    <script src="{% static 'khanatek/vendor/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'khanatek/vendor/js/mdb.min.js' %}"></script>
+
+    <script src="{% static 'js/khanatek.js' %}"></script>
+    <script>
+        new WOW().init();
+    </script>
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>

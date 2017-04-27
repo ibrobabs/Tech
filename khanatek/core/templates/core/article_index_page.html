@@ -1,0 +1,50 @@
+{% extends "core/base.html" %}
+{% load static khanatek_tags wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+    {% get_popular_tags self as poptags %}
+
+<div class="container" style="margin-top: 150px;">
+    <div class="divider-new wow fadeIn mt-4 mb-5" data-wow-delay="0.2s">
+        <h1 class="h1-responsive">{{ self.intro }}</h1>
+    </div>
+
+    <section class="blog">
+        <div class="container">
+            <div class="popular-tags">
+                <div class="row">
+                {% if poptags %}
+                        <div class="col-md-12 hidden-md-down">
+                            <h5> 
+                               <ol class="breadcrumb">
+                                    {% for tag in poptags %}
+                                        {% if request.GET.tag|length and request.GET.tag|safe == tag.slug %}
+                                            <li class="breadcrumb-item"><a class="filtering" href="?tag={{ tag.slug }}"><span class="badge blue">{{ tag }}</span></a></li>
+                                        {% else %}
+                                            <li class="breadcrumb-item"><a href="?tag={{ tag.slug }}"><span class="badge blue">{{ tag }}</span></a></li>  
+                                        {% endif %}
+                                    {% endfor %}
+                                    {# Optional 'show all' appears if filtering by tag #}
+                                    {% if request.GET.tag|length %}
+                                        {% for tag in poptags %}
+                                            {% if request.GET.tag|safe == tag.slug %}
+                                                <li class="breadcrumb-item"><a class="before" href="{% pageurl self %}"><span class="badge blue">show all</span></a></li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                 </ol>
+                            </h5>
+                        </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section extra-margins text-center">
+        {% include "core/includes/article_listing.html" %}
+    </section>
+</div>
+
+{% endblock %}

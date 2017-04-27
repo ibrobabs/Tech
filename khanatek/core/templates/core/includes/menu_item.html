@@ -1,0 +1,11 @@
+<li class="nav-item">
+    <a class="nav-link waves-effect waves-light active" href="{{ value.page.url }}"{% if value.page.url in request.path %}{% endif %}>{{ value.page.title }}</a>
+    {% if value.subitems %}
+    <ul>
+        {% for subitem in value.subitems %}
+        <li>{{ subitem }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+</li>

@@ -1,0 +1,7 @@
+{% if project %}
+<div class="row">
+    {% for item in project %}
+        {% include "core/tags/project_list_item.html" with project=item %}
+    {% endfor %}
+</div>
+{% endif %}

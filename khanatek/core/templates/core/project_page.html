@@ -1,0 +1,105 @@
+{% extends "core/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags khanatek_tags %}
+
+{% block content %}
+{% get_next_sibling_by_order self as next_page %}
+{% get_prev_sibling_by_order self as prev_page %}
+
+<main class="single">
+    {% with self.screenshots.all as screenshots %}
+        {% if screenshots %}
+                {% for screenshot in screenshots %}
+                    {% image screenshot.image width-9999 as shot %}
+                    <div class="work-hero" style=" background-image:url({{ shot.url }}); margin-top: 300px;">
+                        <div class="hero-text" id="tester-unique">
+                            <div class="container">
+                                <div class="content">
+                                    {% include "core/includes/breadcrumb.html" %}
+                                    <h1>{{self.descriptive_title}}</h1>
+                                    <p class="client">{{ self.title }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="specifications {% if not page.visit_the_site %}specifications--no-visit{% endif %}">
+        <div class="container">
+            <div class="content">
+                <ul class="tags">
+                    {% with self.tags.all as tags %}
+                        {% if tags %}
+                            {% for tag in tags %}
+                                <li>
+                                    <a href="{% pageurl self.project_index %}?tag={{ tag.tag.slug }}">{{ tag.tag }}</a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </ul>
+                <div class="client">
+                    {{ self.title }}
+                </div>
+                {% if page.visit_the_site %}
+                <a class="visit" href="{{ page.visit_the_site }}">
+                    Visit the site
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <section class="text-content js-text-content" data-jq-clipthru="testclass-1" id="work-content">
+
+        <div class="container">
+            <div class="main-content  {% if not page.visit_the_site %}main-content--no-visit{% endif %}">
+                <div class=""> 
+                    {% include "core/includes/stream.html" %}
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="nextprev-nav">
+<!--
+        {% if prev_page %}
+            <div class="nextprev prev">
+                <a href="{% pageurl prev_page %}">{% image prev_page.homepage_image fill-80x80 class="thumb" %} <span>{{ prev_page.title }}</span></a>
+            </div>
+        {% endif %}
+-->
+        {% if next_page %}
+            <a href="{% pageurl next_page %}">
+                <div class="next">
+                    {% image next_page.homepage_image fill-2000x600 class="thumb" %}
+                    <div class="container">
+                        <div class="content">
+                            <h2>{{next_page.descriptive_title}}</h2>
+                            <p class="client">{{ next_page.title }}</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {% endif %}
+    </div>
+
+</main>
+
+<!-- 
+<div class="share">
+    {% if self.has_authors %}| {% endif %}<a>Share &#10084;</a>
+    <ul class="options">
+        <li>
+            <div class="fb-like" data-width="100" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+        </li>
+        <li>
+            <a href="http://www.twitter.com/share" class="twitter-share-button">Tweet</a>
+        </li>
+    </ul>
+</div>
+ -->
+
+{% endblock %}

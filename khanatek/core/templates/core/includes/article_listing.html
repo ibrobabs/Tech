@@ -1,0 +1,29 @@
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{# orange arrow navigation #}
+<div class="row">
+{% for post in article_posts %}
+    {% include 'core/tags/article_list_item.html' %}
+{% empty %}
+    No posts found
+{% endfor %}
+</div>
+
+
+<nav>
+    <ul class="pagination pg-blue">
+        {# Pagination #}
+        {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
+        <li class="page-item">
+            {% if article_posts.has_previous %}
+                <a href="?page={{ article_posts.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="page-link"><p> Previous &nbsp;</p></a>
+            {% endif %}
+        </li>
+
+        <li class="page-item">
+            {% if article_posts.has_next %}
+                <a href="?page={{ article_posts.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="page-link"><p> Next </p></a>
+            {% endif %}
+        </div>
+    </div>
+</nav>

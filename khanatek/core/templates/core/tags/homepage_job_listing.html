@@ -1,0 +1,38 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% if jobs %}
+<h2 class="section-heading wow fadeInDown" style="display:block;">{{ jobintro }}</h2>
+
+{% for job in jobs %}
+<div class="row text-center">
+    <!--First column-->
+        <div class="col-md-4 mb-r wow fadeInUp">
+
+            <div class="hm-zoom">
+                <img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20(33).jpg" class="img-fluid" alt="">
+             </div>
+        <!--Featured image-->
+            <a href="{{ job.url }}" class="listing">
+                <div class="view overlay hm-white-slight z-depth-2">
+                        <a>
+                            <div class="mask"></div>
+                        </a>
+                </div>
+            </a>
+            <!--Excerpt-->
+            <div class="card-block">
+                <h3>{{ job.job_title }}</h3>
+                <p>{{ job.job_intro }}</p>
+                    <a class="btn btn-outline-primary waves-effect" href="{{ job.url }}"><i class="fa fa-clone left"></i> View opening</a>
+            </div>
+        </div>
+</div>
+{% endfor %}
+    {% if jobindex.no_jobs_that_fit %}
+    <div class="jobs-followon">
+        {{ jobindex.no_jobs_that_fit|richtext }}
+    </div>
+    {% endif %}
+
+</div>
+{% endif %}

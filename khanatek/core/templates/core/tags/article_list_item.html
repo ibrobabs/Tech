@@ -1,0 +1,40 @@
+{% load wagtailcore_tags wagtailimages_tags khanatek_tags %}
+
+<div class="col-md-4 mb-r wow fadeInUp" data-wow-delay="0.2s">
+    <div class="view overlay hm-white-slight mb-3">
+        {% image post.feed_image fill-398x266 as background %}
+        <img src="{{ background.url }}">
+            <a href="{% pageurl post %}">
+                <div class="mask"></div>
+            </a>
+    </div>
+    <!-- <label class="blue-text">Article</label> -->
+        <h3>{{ post.title }}</h3>
+            {% for author in post.related_author.all %}
+        <p>by <a><strong>{{ author.author.title }}{% if not forloop.last %},&nbsp;{% endif %}</strong></a>{% endfor %}, {% if post.date %}{{ post.date|date:"D, d M, Y" }}{% endif %}</p>
+        <p>{{ post.body|truncatewords_html:12 }}</p>
+        <a href="{% pageurl post %}"><button type="button" class="btn btn-outline-primary waves-effect">Read more</button></a>
+</div>
+
+ <!--First column-->
+<!-- <div class="col-md-6 mb-1 wow fadeInUp"> -->
+                       
+    <!--Post data-->
+<!--         <h6 class="text mb-1">{% if post.date %}{{ post.date|date:"D d M Y" }}{% endif %}</h6>
+            <h4 class="font-up mb-1"><a href="{% pageurl post %}" class="text font-thin">{{ post.title }}</a></h4> -->
+                        
+                <!--Image-->
+<!--                     <div class="view hm-white-slight mb-1-half">
+                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28129%29.jpg" class="img-fluid" alt="Post Image">
+                        <div class="mask waves-effect waves-light"></div>
+                    </div> -->
+                        
+                    <!--Excerpt-->
+                <!-- <p class="font-thin">{{ post.body|truncatewords:15 }}</p> -->
+                        
+                        <!--Button--><!-- 
+            <div class="text-center">
+                <a href="#!" type="button" class="btn btn-outline-grey waves-effect">Read more</a> -->
+      <!--       </div>
+        <div class="post-border pt-1"></div>                        
+</div> -->

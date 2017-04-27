@@ -1,0 +1,52 @@
+{% extends "core/base.html" %}
+{% load khanatek_tags wagtailcore_tags wagtailimages_tags wagtailembeds_tags static %}
+
+{% block content %}
+
+    {% include "core/includes/hero.html" with hero=self.hero.all primary_title=self.hero_intro_primary secondary_title=self.hero_intro_secondary %}
+
+<div class="container">
+    <section class="section feature-box" id="best-features">
+        <div class="container">
+            <div class="section-description lead wow fadeIn" data-wow-delay="0.2s">
+                {{ self.intro_body|richtext }}
+            </div>
+        </div>
+    </section>
+
+    <hr class="between-sections">
+
+    <section class="section extra-margins text-center">
+        <h2 class="section-heading wow fadeInDown" data-wow-delay="0.4s">{{ self.article_title|safe }}</h2>
+        		{% homepage_article_listing %}
+
+    </section>
+    
+    <hr class="between-sections">
+
+     <section class="section extra-margins text-center">
+        <h2 class="section-heading wow fadeIn" data-wow-delay="0.8s">{{ self.project_title|safe }}</h2>
+       
+         		{% homepage_project_listing %}
+       
+    </section>
+
+    <hr class="between-sections">
+
+    <div class="container">
+        <section class="clients section extra-margins text-center">
+            <h2 class="section-heading wow fadeIn" data-wow-delay="0.8s">{{ self.clients_title|safe }}</h2>
+            	{% include "core/includes/clients.html" with clients=self.clients.all %}
+        </section>
+    </div>
+
+    <hr class="between-sections">
+
+    <section class="hiring">
+        <div class="container">
+            {% homepage_job_listing 0 %}
+        </div>
+    </section>
+</div>
+</div>
+{% endblock %}
