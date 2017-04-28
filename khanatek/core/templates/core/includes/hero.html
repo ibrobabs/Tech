@@ -2,7 +2,7 @@
 
 <!-- Complete css addition from style.css -->
 
-<section class="home-hero initial-load view" id="home">
+<section class="home-hero initial-load" id="home">
 
     <style>
     {% for heroItem in hero %}
@@ -22,7 +22,7 @@
 
     <!-- background images for features -->
 
-    <div class="feature-images view hm-black-strong">
+    <div class="feature-images">
         <div class="full-bg-img flex-center">
             {% for heroItem in hero %}
                 {% image heroItem.background max-1800x978 as imgbanner %}

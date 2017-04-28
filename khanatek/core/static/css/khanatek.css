@@ -732,3 +732,127 @@ footer.page-footer {
 .tiles-blog .tiles-margins .tiles-blog-post .tiles-post-body .tiles-post-comments a:hover {
   color: #fff;
 }
+
+
+.about-hero {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 35%; }
+  @media (min-width: 768px) {
+    .about-hero {
+      padding-bottom: 0; } }
+  @media (min-width: 1205px) {
+    .about-hero {
+      background-attachment: fixed; } }
+  .page-servicespage .about-hero {
+    padding-bottom: 0; }
+  .about-hero h2 {
+    color: white;
+    padding-top: 350px;
+    font-size: 35px;
+    font-weight: 300;
+    text-align: center; }
+    .about-hero h2 span {
+      font-weight: 300; }
+    .about-hero h2.thanks {
+      margin: 150px 0; }
+      .about-hero h2.thanks span {
+        font-weight: 400; }
+      @media (min-width: 1205px) {
+        .about-hero h2.thanks {
+          margin: 300px 0; } }
+      .about-hero h2.thanks a {
+        font-size: 22px;
+        padding: 20px;
+        border: none;
+        margin-top: 40px; }
+        .about-hero h2.thanks a:hover {
+          border: none; }
+    .about-hero h2.story {
+      color: white;
+      position: absolute;
+      bottom: 50px;
+      width: 100%;
+      left: 0;
+      font-size: 25px; }
+      .about-hero h2.story:before {
+        content: '';
+        position: absolute;
+        bottom: -25px;
+        left: calc(50% - 25px);
+        width: 50px;
+        height: 20px;
+        background: url("/static/khanatek/images/down-chevron-blue.svg") center no-repeat; }
+      @media (min-width: 768px) {
+        .about-hero h2.story {
+          font-size: 32px;
+          bottom: 140px; } }
+    @media (min-width: 768px) {
+      .about-hero h2 {
+        font-weight: 200; } }
+  .about-hero .intro {
+    text-align: center;
+    color: white;
+    max-width: 900px;
+    font-size: 18px;
+    margin: 100px auto 0; }
+    @media (min-width: 768px) {
+      .about-hero .intro {
+        font-size: 22px; } }
+  .about-hero .btns {
+    text-align: center;
+    margin: 30px auto 0; }
+    .about-hero .btns .btn {
+      border: 1px solid #4668d6;
+      padding: 15px 50px;
+      margin: 0 auto 10px;
+      background: #4668d6;
+      color: white;
+      font-size: 24px; }
+      .about-hero .btns .btn:hover {
+        border: 1px solid #4668d6;
+        background: #4668d6; }
+  .about-hero:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50%;
+    width: 100%;
+    background: rgba(43, 48, 51, 0.75);
+    background: linear-gradient(to top, #2b3033, rgba(43, 48, 51, 0));
+    mix-blend-mode: multiply; }
+  .page-aboutpage .about-hero:before, .page-servicespage .about-hero:before, .page-contact .about-hero:before {
+    background: transparent;
+    height: 0; }
+  .about-hero img {
+    object-fit: cover;
+    height: 400px; }
+    @media (min-width: 768px) {
+      .about-hero img {
+        display: none;
+        height: 600px; } }
+    @media (min-width: 1205px) {
+      .about-hero img {
+        height: calc(100vh - 85px); } }
+  .page-aboutpage .about-hero {
+    height: auto; }
+    @media (min-width: 768px) {
+      .page-aboutpage .about-hero {
+        height: 600px; }
+        .page-aboutpage .about-hero h2 {
+          margin-top: 140px; } }
+    @media (min-width: 1205px) {
+      .page-aboutpage .about-hero {
+        height: 100vh; } }
+  @media (min-width: 768px) {
+    .about-hero {
+      margin-bottom: 0;
+      background-size: cover; }
+      .about-hero h2 {
+        margin: 40px 0 0;
+        font-size: 65px; } }

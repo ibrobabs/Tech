@@ -7,14 +7,27 @@
         .about-hero {
             {% image page.main_image original as main_image %}
             background-image: url("{{ main_image.url }}");
+            margin-top: -150px;
         }
     </style>
+
+ <!--    <style>
+        .view {
+
+            background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/City/full%20page/img%20(1).jpg")no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+    </style> -->
 
     <div class="about-hero">
         <div class="container">
             <div class="content">
-                <h2>{{ page.heading }}</h2>
-                <p class="intro">{{ page.intro }}</p>
+                <h2 class="h2-responsive animated fadeInUp">{{ page.heading }}</h2>
+                <p class="intro text-center">{{ page.intro }}</p>
                 {% if page.related_link_buttons.all %}
                 <div class="btns">
                     {% for button in page.related_link_buttons.all %}
@@ -22,7 +35,6 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-                <h2 class="story"><span>Read our story</span></h2>
             </div>
         </div>
     </div>
