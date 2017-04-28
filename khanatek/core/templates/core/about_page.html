@@ -39,64 +39,67 @@
         </div>
     </div>
 
+    <!-- <div class="container"><hr class="between-sections wow fadeIn" data-wow-delay="0.3s" style="margin-top:80px;"></div> -->
+
+    <section class="section extra-margins">
+        <div class="container divider-new wow fadeInUp mt-4 mb-5 wow fadeInDown" data-wow-delay="0.4s">
+            <h1>About Khanatek</h1>
+        </div>
+    </section>
+
     {% if page.content_blocks.all %}
     <section>
         <div class="container">
-            <div class="reasons">
-                <ul>
-                    {% for content_block in page.content_blocks.all %}
-                    <li>
-                        {% image content_block.image width-675 height="auto" %}
-                        <div class="text">
-                            <div class="number">{{ content_block.year }}</div>
-                            <h3>{{ content_block.title }}</h3>
-                            <p>{{ content_block.description }}</p>
+
+        {% for content_block in page.content_blocks.all %}
+            <div class="row single-post wow fadeInDown" data-wow-delay="0.3s">
+                            <!--First column-->
+                            <div class="col-md-6 mb-r">
+                                <!--Featured image-->
+                                {% image content_block.image fill-520x500 as img %}
+                                <div class="view overlay hm-white-slight">
+                                    <img src="{{ img.url }}">
+                                    <a>
+                                        <div class="mask waves-light"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--/First column-->
+
+                            <!--Second column-->
+                            <div class="col-md-6 mb-r">
+                                <!--Excerpt-->
+                                <a href="" class="blue-text"><h5><i class="fa fa-clock-o"></i>  {{ content_block.year }}</h5></a>
+                                
+                                <h2>{{ content_block.title }}</h2>
+                                <p>{{ content_block.description }}</p>
+                            </div>
+                            <!--/Second column-->
                         </div>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
+            {% endfor %}
         </div>
     </section>
     {% endif %}
 
-    <section class="text-content">
+    <section class="section extra-margins text-center">
         <div class="container">
 
             {% if page.offices.all %}
-            <div class="offices">
-                <h2>Our offices</h2>
-                <ul>
-                    {% for office in page.offices.all %}
-                    <li>
-                        <div class="content">
-                            {{ office.svg|safe }}
-                            <h3>{{ office.title }}</h3>
-                            <p>{{ office.description }}</p>
-                        </div>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
+                <div class="offices wow fadeInDown">
+                    <div class="divider-new wow fadeInUp mt-4 mb-5 wow fadeInDown" data-wow-delay="0.4s">
+                        <h1>Our offices</h1>
+                    </div>
+                        {% for office in page.offices.all %}
+                            <div class="row">
+                                <div class="col-md-4 wow fadeInUp">
+                                    {{ office.svg|safe }}
+                                    <h4>{{ office.title }}</h4>
+                                        <p>{{ office.description }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                </div>
             {% endif %}
-
-            <div class="values">
-                <h2>Our four core values</h2>
-                <ul>
-                    <li>
-                        <img src="{% static 'khanatek/img/corevalue-better.jpg' %}" alt="Make clients happy">
-                    </li>
-                    <li>
-                        <img src="{% static 'khanatek/img/corevalue-happy.jpg' %}" alt="Make things better">
-                    </li>
-                    <li>
-                        <img src="{% static 'khanatek/img/corevalue-never.jpg' %}" alt="Never stand still">
-                    </li>
-                    <li>
-                        <img src="{% static 'khanatek/img/corevalue-enjoy.jpg' %}" alt="Enjoy it">
-                    </li>
-                </ul>
-            </div>
             
         </div>
     </section>
