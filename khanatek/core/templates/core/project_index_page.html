@@ -43,122 +43,37 @@
             {% endif %}
         </div>
     </div>
-
-    <div class="work">
-        <section class="container">
-            {% if projects %}
-                <ul class="">
-                    {% for project in projects %}
-                        {% with project.screenshots.all|first as screenshot %}
-                        {% image screenshot.image height-500 as screenshotimage %}
-                        <li>
-                            <a href="{% pageurl project %}">
-                                <div class="content">
-                                    {% image screenshot.image width-1000 as background %}
-                                    <div class="image-container" style="background-image: url('{{ background.url }}');">
-                                        {% if screenshot.image.credit_text %}
-                                    </div>
-                                    {% endif %}
-                                    <div class="credit">
-                                        <h5>{{ screenshot.image.credit_text }}</h5>
-                                    </div>
-                                    <div class="work-text">
-                                        <h3>{{ project.descriptive_title }}</h3>
-                                        <h4>{{ project.title }}</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        {% endwith %}
-
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </section>
-    </div>
-
-    <div class="container pagination">
-        {# Pagination #}
-
-        {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
-        <div class="previous">
-            {% if projects.has_previous %}
-                <a href="?page={{ projects.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Previous &nbsp;</p></a>
-            {% endif %}
-        </div>
-
-        <!--
-        <div class="number">
-            <p> {{ works.number }} of {{ works.paginator.num_pages }} </p>
-        </div>
-        -->
-
-        <div class="next">
-            {% if projects.has_next %}
-                <a href="?page={{ projects.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Next </p></a>
-            {% endif %}
-        </div>
-    </div>
-
-<div class="container">
-            
-            <div class="tiles-mag">
-            
-                <!-- Magazine -->
-                <div class="row mb-3">
-                    <!-- Main news --> 
-                    <div class="col-md-12">
-
-                        <!--Tiles blog-->
-                        <div class="tiles-blog">
-                            <!--First row-->
-                            <div class="row mb-3">
-                                <!--First column-->
-                                <div class="col-md-6 tiles-margins wow fadeIn" data-wow-delay="0.4s">
-                                    <!--Single blog post-->
-                                    <div class="tiles-blog-post waves-effect waves-light z-depth-1">
-                                        <!--Blog post link-->
-                                        <a href="#!">
-                                            <!--Image-->
-                                            <div class="tiles-image hm-zoom">
-
-                                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20(11).jpg" class="img-fluid" alt="">
-
-                                            </div>
-                                            <!--/Image-->
-                                        </a>
-                                        <!--Blog post link-->
-
-                                        <!--Blog post body-->
-                                        <div class="tiles-post-body">
-                                            <!--Excerpt-->
-                                            {% for tag in poptags %}
-                                            <span class="tiles-post-category">
-                                                {% if request.GET.tag|length and request.GET.tag|safe == tag.slug %}
-                                                <a href="?tag={{ tag.slug }}" rel="category tag">{{ tag }}</a>
-                                                {% endif %}
-                                            </span>
-                                            {% endfor %}
-
-                                            <h3 class="tiles-post-title h3-responsive"><a href="http://biznesflow.pl/" class="white-text">This is a title of the news</a></h3>
-
-                                            
-                                            <span class="tiles-post-comments"><a href="#!"><i class="fa fa-comments-o"></i> 7 comments </a></span>
-                                            <!--/Excerpt-->
-                                        </div>
-                                        <!--/Blog post body-->
-                                    </div>
-                                    <!--/Single blog post-->
-                                </div>
-                                <!--/First column-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="container">        
+        {% if projects %}
+            <div class="row">
+                {% for item in projects %}
+                    {% include "core/tags/project_list_item.html" with project=item %}
+                {% endfor %}
             </div>
-</div>    
+        {% endif %}
+    </div>
+    <nav>
+        <ul class="pagination pg-blue">
+            {# Pagination #}
 
+            {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
+            <li class="page-item">
+                {% if projects.has_previous %}
+                    <a href="?page={{ projects.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Previous &nbsp;</p></a>
+                {% endif %}
+            </li>
 
+            <!--
+            <div class="number">
+                <p> {{ works.number }} of {{ works.paginator.num_pages }} </p>
+            </div>
+            -->
 
-
+            <li class="page-item">
+                {% if projects.has_next %}
+                    <a href="?page={{ projects.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}"><p> Next </p></a>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
 {% endblock %}

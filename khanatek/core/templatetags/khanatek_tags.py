@@ -141,7 +141,7 @@ def person_article_post_listing(context, calling_page=None):
 @register.inclusion_tag('core/tags/project_and_article_listing.html', takes_context=True)
 def project_and_article_listing(context, count=10, marketing=False):
     """
-    An interleaved list of work and blog items.
+    An interleaved list of work and article items.
     """
     article_posts = ArticlePage.objects.filter(live=True)
     projects = ProjectPage.objects.filter(live=True)
@@ -163,7 +163,7 @@ def project_and_article_listing(context, count=10, marketing=False):
         projects = projects.exclude(marketing_only=True)
         featured_items = []
     
-    # If (remaining) count is odd, blog_count = work_count + 1
+    # If (remaining) count is odd, article_count = project_count + 1
     article_count = (count + 1) / 2
     project_count = count / 2
 

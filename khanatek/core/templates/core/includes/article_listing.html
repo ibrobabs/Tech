@@ -24,6 +24,6 @@
             {% if article_posts.has_next %}
                 <a href="?page={{ article_posts.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="page-link"><p> Next </p></a>
             {% endif %}
-        </div>
-    </div>
+        </li>
+    </ul>
 </nav>
