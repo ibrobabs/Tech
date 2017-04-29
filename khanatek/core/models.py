@@ -355,7 +355,7 @@ class StandardPage(Page):
         related_name='+'
     )
 
-    show_in_play_menu = models.BooleanField(default=False)
+    # show_in_play_menu = models.BooleanField(default=False)
 
     search_fields = Page.search_fields + [
         index.SearchField('intro'),
@@ -380,7 +380,7 @@ class StandardPage(Page):
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        FieldPanel('show_in_play_menu'),
+        # FieldPanel('show_in_play_menu'),
     ]
 
     			##################
@@ -709,7 +709,7 @@ class ArticleIndexPage(Page):
         index.SearchField('title'),
     ]
 
-    show_in_play_menu = models.BooleanField(default=False)
+    # show_in_play_menu = models.BooleanField(default=False)
 
     def get_popular_tags(self):
         # the same as Drupal and only needed for the rss feed)
@@ -773,7 +773,7 @@ class ArticleIndexPage(Page):
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        FieldPanel('show_in_play_menu'),
+        # FieldPanel('show_in_play_menu'),
     ]
 
 
@@ -1039,7 +1039,7 @@ class ProjectPageAuthor(Orderable):
 
 
 class ProjectPage(Page):
-    summary = models.CharField(max_length=255)
+    # summary = models.CharField(max_length=255)
     descriptive_title = models.CharField(max_length=255)
     intro = RichTextField("Intro", blank=True)
     body = StreamField([
@@ -1065,7 +1065,7 @@ class ProjectPage(Page):
     marketing_only = models.BooleanField(default=False, help_text='Display this work item only on marketing landing page')
     visit_the_site = models.URLField(blank=True)
 
-    show_in_play_menu = models.BooleanField(default=False)
+    # show_in_play_menu = models.BooleanField(default=False)
 
     @property
     def project_index(self):
@@ -1089,7 +1089,7 @@ class ProjectPage(Page):
         FieldPanel('descriptive_title'),
         InlinePanel('related_author', label="Author"),
         # FieldPanel('author_left'),
-        FieldPanel('summary'),
+        # FieldPanel('summary'),
         FieldPanel('intro', classname="full"),
         StreamFieldPanel('body'),
         # StreamFieldPanel('streamfield'),
@@ -1101,7 +1101,7 @@ class ProjectPage(Page):
 
     promote_panels = [
 	    MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-	    FieldPanel('show_in_play_menu'),
+	    # FieldPanel('show_in_play_menu'),
 	    FieldPanel('marketing_only'),
     ]
 
@@ -1110,7 +1110,7 @@ class ProjectPage(Page):
 class ProjectIndexPage(Page):
     intro = RichTextField(blank=True)
 
-    show_in_play_menu = models.BooleanField(default=False)
+    # show_in_play_menu = models.BooleanField(default=False)
     hide_popular_tags = models.BooleanField(default=False)
 
     def get_popular_tags(self):
@@ -1164,7 +1164,7 @@ class ProjectIndexPage(Page):
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        FieldPanel('show_in_play_menu'),
+        # FieldPanel('show_in_play_menu'),
     ]
 
 
