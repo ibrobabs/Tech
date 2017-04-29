@@ -4,7 +4,7 @@
 
 {% block content %}
 <main>
-        <div class="container-fluid">
+        <div class="container">
         <!--Section: Blog v.4-->
             <section class="section section-blog-fw" style="margin-top: 20px;">
 
@@ -12,23 +12,29 @@
                 <div class="row">
                     <div class="col-md-10 offset-md-1 wow fadeIn" data-wow-delay="0.2s">
 
-                    {% image page.main_image fill-1076x475 as main_image %}
+                    {% image page.main_image fill-920x406 as main_image %}
                         <!--Featured image-->
                         <img src="{{ main_image.url }}">
 
                         <!--Post data-->
                                 <div class="jumbotron wow fadeIn" data-wow-delay="0.4s">
                                     <h2 class="{% if self.title|length >= 30 %}long-title{% endif %}">{{ self.title }}</h2>
-                                    <p>Written by {% for author in post.related_author.all %}
-                                <a><strong>{{ author.author.title }}{% if not forloop.last %},&nbsp;{% endif %}</strong></a>{% endfor %}, {% if self.date %}{{ self.date|date:"j F Y" }}{% endif %}</p>
+                                    <p>{% if author.author %}
+                                <a href="{% pageurl author.author %}">{{ author.author.title }}{% if not forloop.last %},&nbsp;{% endif %}</a>{% endif %} {% if self.date %}{{ self.date|date:"D, d M, Y" }}{% endif %}</p>
                                 </div>
-                                        <div class="post-text">
+                                    <div class="post-text">
 
-                                            {% include "core/includes/stream.html" %}
-                                            
-                                        </div>
+                                    {% if self.intro %}
+                                    
+                                        {{ self.intro|richtext }}
+                                    
+                                    {% endif %}
+
+                                        {% include "core/includes/stream.html" %}
+
+                                    </div>
                                         <!--/Post text-->
-                                        <hr>
+                                    <hr>
 
                             <section class="mb-4">
                                 <!--Author box-->
@@ -49,8 +55,10 @@
                                         {% endif %}
                                         </div>
                                         <!--Author Data-->
-                                        <div class=" col-12 col-sm-10">
-                                        {% if author.author %}<p><strong><a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a></strong></p>{% endif %}
+                                        <div class="col-12 col-sm-10">
+                                        {% if author.author %}
+                                        <p><strong><a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a></strong></p>
+                                        {% endif %}
         <!--                                     <div class="personal-sm">
                                                 <a class="email-ic"><i class="fa fa-home"> </i></a>
                                                 <a class="fb-ic"><i class="fa fa-facebook"> </i></a>
@@ -59,10 +67,9 @@
                                                 <a class="li-ic"><i class="fa fa-linkedin"> </i></a>
                                                 <a class="email-ic"><i class="fa fa-envelope-o"> </i></a>
                                             </div> -->
-                                            <p> {% if author.author.role %}
-                                                <span class="role">{{ author.author.role }}</span>
+                                        <p> {% if author.author.role %}<span class="role">{{ author.author.role }}</span>
                                                 {% endif %}
-                                            </p>
+                                        </p>
                                         </div>
                                     </div>
                                     {% endfor %}
@@ -73,26 +80,26 @@
                             </section>
                             <!--/Section: About author-->
                             {% with self.tags.all as tags %}
+                            <div class="row">
+                            <div class="col-md-12 hidden-md-down">
                             {% if tags %}
                                 <div class="tags">
                                     <h4>tags</h4>
-                                    <ul>
                                     {% for tag in tags %}
-                                        <li>
-                                            <a href="{% pageurl self.article_index %}?tag={{ tag.tag.slug }}">{{ tag.tag }}</a>
-                                        </li>
+                                            <a href="{% pageurl self.article_index %}?tag={{ tag.tag.slug }}"><span class="badge blue">{{ tag.tag }}</span></a>
                                     {% endfor %}
-                                    </ul>
                                 </div>
                             {% endif %}
+                            </div>
                             {% endwith %}
+                            </div>
                         </div>
                     </div>
             </section>
             <!--Section: About author-->               
         </div>
 
-    {% get_next_sibling_article self as next_page %}
+    <!-- {% get_next_sibling_article self as next_page %}
         {% if next_page %}
             <div class="nextprev-nav">
                 <a href="{% pageurl next_page %}">
@@ -113,7 +120,7 @@
                     </div>
                 </a>
             </div>
-        {% endif %}
+        {% endif %} -->
 
 </main>
 {% endblock %}

@@ -856,3 +856,190 @@ footer.page-footer {
       .about-hero h2 {
         margin: 40px 0 0;
         font-size: 65px; } }
+
+.intro .rich-text p {
+font-size:20px;
+margin-bottom:25px;
+max-width:800px;
+}
+
+.intro .rich-text p {
+font-size:20px;
+margin-bottom:25px;
+max-width:800px;
+}
+
+.rich-text p,.stream-field p {
+max-width:800px;
+font-size:16px;
+}
+
+.rich-text h2,.stream-field h2 {
+text-align:left;
+font-size:23px;
+font-weight:600;
+color:#2b3033;
+margin:30px 0 10px;
+}
+
+.rich-text ol li,.stream-field ol li {
+list-style-type:decimal;
+}
+
+.rich-text li,.stream-field li {
+max-width:800px;
+font-size:16px;
+font-weight:400;
+list-style-type:square;
+color:#2b3033;
+line-height:1.5;
+margin:0 0 20px;
+}
+
+.rich-text blockquote,.stream-field blockquote {
+position:relative;
+z-index:1;
+margin:30px 0;
+padding:20px;
+}
+
+.rich-text blockquote:before,.stream-field blockquote:before {
+content:'';
+position:absolute;
+left:-40px;
+top:-20px;
+width:220px;
+height:220px;
+background:url(/static/torchbox/images/pattern-sml.0c3b5a7f1599.png) no-repeat center;
+background-size:cover;
+-webkit-transform:rotate(90deg);
+-ms-transform:rotate(90deg);
+transform:rotate(90deg);
+opacity:0.15;
+z-index:0;
+}
+
+.rich-text blockquote p,.stream-field blockquote p {
+max-width:100%;
+font-weight:400;
+line-height:1.5;
+margin-bottom:20px;
+font-size:20px;
+}
+
+.rich-text blockquote cite,.stream-field blockquote cite {
+font-weight:500;
+font-style:normal;
+font-size:13px;
+line-height:1.4;
+text-transform:uppercase;
+letter-spacing:.5px;
+display:inline-block;
+color:#23b0b0;
+}
+
+.rich-text img,.stream-field img {
+width:100%;
+height:auto;
+margin:40px auto;
+}
+
+.rich-text .full-width,.stream-field .full-width {
+border:1px solid rgba(0,0,0,0.05);
+box-shadow:0 0 30px rgba(0,0,0,0.05);
+background:#FFF;
+margin:40px 0 30px;
+padding:10px;
+}
+
+.rich-text .img-holder,.stream-field .img-holder {
+zoom:1;
+margin:30px 0;
+}
+
+.rich-text .img-holder img,.stream-field .img-holder img {
+margin:0 0 15px;
+}
+
+.rich-text .img-holder p,.stream-field .img-holder p {
+font-style:italic;
+font-size:14px;
+position:relative;
+text-align:center;
+opacity:0.8;
+max-width:none;
+margin:0;
+}
+
+figure,form,.rich-text .full-width .img-holder,.stream-field .full-width .img-holder,.popular-tags p {
+margin:0;
+}
+
+.rich-text ul,.stream-field ul,.rich-text ol,.stream-field ol {
+margin-left:40px;
+}
+
+.rich-text .align-right,.stream-field .align-right,.nextprev-nav .next,.contact-form__field-wrapper,.page-signupformpage .cta .container,.services-wrapper--relative,.services-section--border-bottom {
+position:relative;
+}
+
+.hiring .sml,.hiring h2 a,.rich-text p a,.stream-field p a,.tags a,.page-contact .contact-bar__item a,.address a,.people-list--text h2,.page-personpage .blog-listing li .text h3,#posts h2 a,.author-holder a {
+position:relative;
+}
+
+.rich-text p,.stream-field p,.rich-text li,.stream-field li {
+font-size:21px;
+}
+
+.page-signupformpage .rich-text {
+font-size:23px;
+margin:50px auto 30px;
+}
+
+.page-signupformpage .rich-text img {
+float:right;
+width:50%;
+}
+
+.rich-text .align-right,.stream-field .align-right {
+right:-90px;
+margin-right:-150px;
+float:right;
+z-index:1;
+}
+
+/* Cover photo */
+.cover-photo .hero-image {
+  max-width: 100%;
+  width: auto;
+  margin: auto; }
+
+.cover-photo .hero-image::after {
+  display: block;
+  position: relative;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #000000 100%);
+  margin-top: -150px;
+  height: 150px;
+  width: 100%;
+  content: ''; }
+
+.cover-photo .cover-text {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  color: #fff; }
+  @media (max-width: 34em) {
+    .cover-photo .cover-text {
+      bottom: 5px;
+      left: 25px; }
+      .cover-photo .cover-text h1 {
+        font-size: 1rem; }
+      .cover-photo .cover-text h5 {
+        font-size: 0.75rem; }
+      .cover-photo .cover-text h4 {
+        font-size: 0.75rem; } }
+  .cover-photo .cover-text h5 {
+    margin-top: 1rem; }
+    .cover-photo .cover-text h5 span {
+      float: right;
+      padding-left: 1.5rem; }

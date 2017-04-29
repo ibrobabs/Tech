@@ -10,98 +10,59 @@
         }
     {% else %}
         .about-hero {
-            background-image: url("{% static 'khanatek/img/eng.jpg' %}");
+            background: url("{% static 'khanatek/images/eng.jpg' %}") no-repeat center center;
+            margin-top: -150px;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
         }
     {% endif %}
 </style>
 
-<div class="about-hero">
-    <section class="hiring">
+<div class="about-hero fluid">
+    <section class="">
         <div class="container">
-            <span style="display: block !important; margin: 0 0 60px 0;">
-            {% homepage_job_listing 0 intro_text=page.intro %}
-            </span>
+            {% homepage_job_listing 0 %}
         </div>
     </section>
 </div>
 
 {% if self.reasons_to_join.all %}
-    <section>
-        <div class="container">
-            <div class="reasons">
-                <h2>{{ self.reasons_intro }}</h2>
-                <ul>
-                    {% for reason in self.reasons_to_join.all %}
-                    <li>
-                        {% image reason.image width-675 height="auto" %}
-                        <div class="text">
-                            <div class="number">{{ forloop.counter|stringformat:"02d" }}</div>
-                            <h3>{{ reason.title }}</h3>
-                            <p>{{ reason.body }}</p>
-                        </div>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </section>
-{% endif %}
-
-<section class="text-content">
+<section class="section extra-margins">
     <div class="container">
-        <div class="offices">
-            <h2>Our offices</h2>
-            <ul>
-                <li>
-                    <div class="content">
-                        {{ settings.khanatek.GlobalSettings.oxford_address_svg|safe }}
-
-                        <h3>Edmonton</h3>
-                        <p>Enjoy the serene environment with highly energy efficient structures and consideration.</p>
-                    </div>
-                </li>
-            </ul>
+        <div class="divider-new wow fadeInUp mt-4 mb-5 wow fadeInDown" data-wow-delay="0.4s">
+            <h2>{{ self.reasons_intro }}</h2>
         </div>
 
-        <div class="values">
-            <h2>Our four core values</h2>
-            <ul>
-                <li>
-                    <img src="{% static 'khanatek/img/corevalue-better.jpg' %}" alt="Make clients happy" />
-                </li>
-                <li>
-                    <img src="{% static 'khanatek/img/corevalue-better.jpg' %}" alt="Make things better" />
-                </li>
-                <li>
-                    <img src="{% static 'khanatek/img/corevalue-better.jpg' %}" alt="Never stand still" />
-                </li>
-                <li>
-                    <img src="{% static 'khanatek/img/corevalue-better.jpg' %}" alt="Enjoy it" />
-                </li>
-            </ul>
-        </div>
+        {% for reason in self.reasons_to_join.all %}
+            <div class="row single-post wow fadeInDown" data-wow-delay="0.3s">
+                            <!--First column-->
+                <div class="col-md-6 mb-r">
+                            <!--Featured image-->
+                        {% image reason.image fill-520x520 as img %}
+                        <div class="view overlay hm-white-slight">
+                            <img src="{{ img.url }}" class="img-fluid">
+                            <a>
+                                <div class="mask waves-light"></div>
+                            </a>
+                        </div>
+                </div>
+                            <!--/First column-->
+
+                            <!--Second column-->
+                <div class="col-md-6 mb-r">
+                                <!--Excerpt-->
+                    <a href="" class="blue-text"><h5>{{ forloop.counter|stringformat:"02d" }}</h5></a>
+                                
+                    <h2>{{ reason.title }}</h2>
+                    <p>{{ reason.body }}</p>
+                </div>
+                <!--/Second column-->
+            </div>
+        {% endfor %}
     </div>
 </section>
-
-{% if self.involvement_title or self.involvement.all %}
-    <div class="involved">
-        <h2>{{ self.involvement_title }}</h2>
-        {% if self.involvement.all %}
-        <ul class="involved-in">
-            {% for involvement in self.involvement.all %}
-            <li>
-                <a href="">
-                    <div class="content">
-                        {{ involvement.svg|safe }}
-                        <h3>{{ involvement.title }}</h3>
-                        <p>{{ involvement.description }}</p>
-                    </div>
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-    </div>
 {% endif %}
 
 {% endblock %}

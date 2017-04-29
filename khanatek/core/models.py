@@ -7,6 +7,7 @@ from django.db import models
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from django.shortcuts import render
+from django.utils import timezone
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.functional import cached_property
 from django.views.decorators.vary import vary_on_headers
@@ -950,6 +951,13 @@ class JobIndexPage(Page):
         help_text="Will be shown instead of the intro when job listings are included "
         "on other pages")
     no_jobs_that_fit = RichTextField(blank=True)
+    # main_image = models.ForeignKey(
+    #     'wagtailimages.Image',
+    #     null=True,
+    #     blank=True,
+    #     on_delete=models.SET_NULL,
+    #     related_name='+'
+    # )
     # terms_and_conditions = models.URLField(null=True, blank=True)
     # refer_a_friend = models.URLField(null=True, blank=True)
     reasons_intro = models.TextField(blank=True)
@@ -969,6 +977,7 @@ class JobIndexPage(Page):
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('intro', classname="full"),
+        # ImageChooserPanel('main_image'),
         FieldPanel('listing_intro', classname="full"),
         FieldPanel('no_jobs_that_fit', classname="full"),
         # FieldPanel('terms_and_conditions', classname="full"),

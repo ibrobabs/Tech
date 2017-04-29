@@ -1,7 +1,9 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% if jobs %}
-<h2 class="section-heading wow fadeInDown" style="display:block;">{{ jobintro }}</h2>
+<section class="section">
+<h2 class="section-heading wow fadeInDown" style="display:block; padding-top:-30px;">{{ jobintro }}</h2>
+</section>
 
 {% for job in jobs %}
 <div class="row text-center">
@@ -29,7 +31,7 @@
 </div>
 {% endfor %}
     {% if jobindex.no_jobs_that_fit %}
-    <div class="jobs-followon">
+    <div class="text-center blue-text" style="padding-bottom: 20px;">
         {{ jobindex.no_jobs_that_fit|richtext }}
     </div>
     {% endif %}

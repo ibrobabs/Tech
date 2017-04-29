@@ -8,6 +8,7 @@
             {% image page.main_image original as main_image %}
             background-image: url("{{ main_image.url }}");
             margin-top: -150px;
+            
         }
     </style>
 
@@ -23,7 +24,7 @@
 
     </style> -->
 
-    <div class="about-hero">
+    <div class="about-hero fluid">
         <div class="container">
             <div class="content">
                 <h2 class="h2-responsive animated fadeInUp">{{ page.heading }}</h2>
@@ -58,7 +59,7 @@
                                 <!--Featured image-->
                                 {% image content_block.image fill-520x500 as img %}
                                 <div class="view overlay hm-white-slight">
-                                    <img src="{{ img.url }}">
+                                    <img src="{{ img.url }}" class="img-fluid">
                                     <a>
                                         <div class="mask waves-light"></div>
                                     </a>

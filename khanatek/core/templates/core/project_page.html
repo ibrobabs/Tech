@@ -1,80 +1,164 @@
 {% extends "core/base.html" %}
-{% load wagtailcore_tags wagtailimages_tags khanatek_tags %}
+{% load wagtailcore_tags wagtailimages_tags khanatek_tags static %}
 
 {% block content %}
 {% get_next_sibling_by_order self as next_page %}
 {% get_prev_sibling_by_order self as prev_page %}
 
 <main class="single">
-    {% with self.screenshots.all as screenshots %}
-        {% if screenshots %}
-                {% for screenshot in screenshots %}
-                    {% image screenshot.image width-9999 as shot %}
-                    <div class="work-hero" style=" background-image:url({{ shot.url }}); margin-top: 300px;">
-                        <div class="hero-text" id="tester-unique">
-                            <div class="container">
-                                <div class="content">
-                                    {% include "core/includes/breadcrumb.html" %}
-                                    <h1>{{self.descriptive_title}}</h1>
-                                    <p class="client">{{ self.title }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-        {% endif %}
-    {% endwith %}
+    <div class="container-fluid">
+        <div class="row cover-photo wow fadeIn">
+            <div class="col-md-12">
+                        <!-- Image -->
+                {% with self.screenshots.all as screenshots %}
+                    {% if screenshots %}
+                        {% for screenshot in screenshots %}
+                                {% image screenshot.image fill-1900x551 as shot %}
+                    <div class="hero-image view z-depth-2">
+                        <img src="{{ shot.url }}" class="img-fluid">
+                    </div>   
+                            
+                        <!-- Text -->
+                    <div class="cover-text">
+                            <!-- Post data -->
+                            
+                        <h1>{{ self.descriptive_title }}</h1>
 
-    <div class="specifications {% if not page.visit_the_site %}specifications--no-visit{% endif %}">
-        <div class="container">
-            <div class="content">
-                <ul class="tags">
-                    {% with self.tags.all as tags %}
-                        {% if tags %}
-                            {% for tag in tags %}
-                                <li>
-                                    <a href="{% pageurl self.project_index %}?tag={{ tag.tag.slug }}">{{ tag.tag }}</a>
-                                </li>
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
-                </ul>
-                <div class="client">
-                    {{ self.title }}
-                </div>
-                {% if page.visit_the_site %}
-                <a class="visit" href="{{ page.visit_the_site }}">
-                    Visit the site
-                </a>
-                {% endif %}
+                        <h4 class="blue-text">{{ self.title }}</h4>
+                               
+                    </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
             </div>
         </div>
     </div>
 
-    <section class="text-content js-text-content" data-jq-clipthru="testclass-1" id="work-content">
-
+    <section class="section">
+    <div class="{% if not page.visit_the_site %}specifications--no-visit{% endif %}">
         <div class="container">
-            <div class="main-content  {% if not page.visit_the_site %}main-content--no-visit{% endif %}">
-                <div class=""> 
-                    {% include "core/includes/stream.html" %}
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    {% if page.visit_the_site %}
+                        <a class="visit" href="{{ page.visit_the_site }}"><button type="button" class="btn btn-primary btn-sm">
+                                Visit the site
+                        </button></a>
+                    {% endif %}
                 </div>
             </div>
         </div>
-
+    </div>
     </section>
 
+    <section class="section section-blog-fw" style="padding-top: 20px;">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-md-1 wow fadeIn" data-wow-delay="0.2s">
+                    <div class="post-text">
+
+                                {% if self.summary %}
+
+                                    {{ summary }}
+                                
+                                {% endif %}
+
+                                {% if self.intro %}
+                                    
+                                    {{ self.intro|richtext }}            
+                                
+                                {% endif %}
+
+                            {% include "core/includes/stream.html" %}
+                    </div>
+                            <!--/Post text-->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <div class="container"><hr></div>
+
+    <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-md-1 wow fadeIn" data-wow-delay="0.2s">
+                    <section class="mb-4">
+                                    <!--Author box-->
+                                {% with self.related_author.all as authors %}
+                                    {% if authors %}
+                                    <div class="author-box">
+                                        <!--Name-->
+                                        <h3 class="h3-responsive text-center">About author</h3>
+                                        <hr>
+                                        {% for author in authors %}
+                                        <div class="row">
+                                            <!--Avatar-->
+                                            <div class="col-12 col-sm-2">
+                                            {% if author.author.image %}
+                                                {% image author.author.image fill-300x300 as photo %}
+
+                                                <img src="{{ photo.url }}"  width="{{ photo.width }}" height="{{ photo.height }}" class="img-fluid rounded-circle z-depth-2">
+                                            {% endif %}
+                                            </div>
+                                            <!--Author Data-->
+                                            <div class="col-12 col-sm-10">
+                                            {% if author.author %}
+                                            <p><strong><a href="{% pageurl author.author %}" class="name">{{ author.author.title }}</a></strong></p>
+                                            {% endif %}
+            <!--                                     <div class="personal-sm">
+                                                    <a class="email-ic"><i class="fa fa-home"> </i></a>
+                                                    <a class="fb-ic"><i class="fa fa-facebook"> </i></a>
+                                                    <a class="tw-ic"><i class="fa fa-twitter"> </i></a>
+                                                    <a class="gplus-ic"><i class="fa fa-google-plus"> </i></a>
+                                                    <a class="li-ic"><i class="fa fa-linkedin"> </i></a>
+                                                    <a class="email-ic"><i class="fa fa-envelope-o"> </i></a>
+                                                </div> -->
+                                            <p> {% if author.author.role %}<span class="role">{{ author.author.role }}</span>
+                                                    {% endif %}
+                                            </p>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                    <!--/.Author box-->
+                                {% endwith %}
+                                </section>
+                            <!--/Section: About author-->
+                            {% with self.tags.all as tags %}
+                            <div class="row">
+                            <div class="col-md-12 hidden-md-down">
+                            {% if tags %}
+                                <div class="tags">
+                                    <h4>tags</h4>
+                                    {% for tag in tags %}
+                                            <a href="{% pageurl self.project_index %}?tag={{ tag.tag.slug }}"><span class="badge blue">{{ tag.tag }}</span></a>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            </div>
+                            {% endwith %}
+                            </div>
+        </div>
+    </div>
+</div>    
+
+
     <div class="nextprev-nav">
-<!--
+
+        <!--
         {% if prev_page %}
             <div class="nextprev prev">
                 <a href="{% pageurl prev_page %}">{% image prev_page.homepage_image fill-80x80 class="thumb" %} <span>{{ prev_page.title }}</span></a>
             </div>
         {% endif %}
 -->
-        {% if next_page %}
+
+        <!-- {% if next_page %}
             <a href="{% pageurl next_page %}">
                 <div class="next">
-                    {% image next_page.homepage_image fill-2000x600 class="thumb" %}
+                    {% image next_page.homepage_image fill-1850x500 class="thumb" %}
                     <div class="container">
                         <div class="content">
                             <h2>{{next_page.descriptive_title}}</h2>
@@ -83,7 +167,7 @@
                     </div>
                 </div>
             </a>
-        {% endif %}
+        {% endif %} -->
     </div>
 
 </main>
@@ -101,5 +185,8 @@
     </ul>
 </div>
  -->
+
+
+
 
 {% endblock %}

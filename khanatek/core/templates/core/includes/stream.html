@@ -22,7 +22,7 @@
                         {% elif block.block_type == 'bustout' %}
                             <div class="bustout clearfix">
                                 {% image block.value.image width-1280 as blockimage %}
-                                <img src="{{ blockimage.url }}" width="{{ blockimage.width }}" height="{{ blockimage.height }}" alt="{{ blockimage.alt }}" />
+                                <img src="{{ blockimage.url }}" width="{{ blockimage.width }}" height="{{ blockimage.height }}" alt="{{ blockimage.alt }}" class="img-fluid" />
 
                                 <div class="bustout-text">
                                     {{ block.value.text|richtext }}
@@ -40,7 +40,7 @@
                                     {% endif %}
 
                                     <div {% if block.value.attribution %}class="img-credit"{% endif %}>
-                                        <img src="{{ blockimage.url }}" width="{{ blockimage.width }}" height="{{ blockimage.height }}" alt="{{ blockimage.alt }}" />
+                                        <img src="{{ blockimage.url }}" width="{{ blockimage.width }}" height="{{ blockimage.height }}" alt="{{ blockimage.alt }}" class="img-fluid" />
                                         {% if block.value.attribution %}<p class="credit">{{ block.value.attribution }}</p>{% endif %}
                                     </div>
                                     {% if block.value.caption %}
@@ -52,7 +52,7 @@
                             <div class="">
                                 <div class="img-holder">
                                     {% image block.value.image width-1280 as blockimage %}
-                                    <img src="{{ blockimage.url }}" width="{{ blockimage.width }}" height="{{ blockimage.height }}" alt="{{ blockimage.alt }}" />
+                                    <img src="{{ blockimage.url }}" width="{{ blockimage.width }}" height="{{ blockimage.height }}" alt="{{ blockimage.alt }}" class="img-fluid" />
                                 </div>
                             </div>
                         {% elif block.block_type == 'raw_html' %}
