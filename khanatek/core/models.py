@@ -437,7 +437,7 @@ class AboutPage(Page):
     )
     heading = models.TextField(blank=True)
     intro = models.TextField(blank=True)
-    involvement_title = models.TextField(blank=True)
+    # involvement_title = models.TextField(blank=True)
 
     content_panels = [
         FieldPanel('title', classname='full title'),
@@ -447,7 +447,7 @@ class AboutPage(Page):
         InlinePanel('related_link_buttons', label='Header buttons'),
         InlinePanel('content_blocks', label='Content blocks'),
         InlinePanel('offices', label='Offices'),
-        FieldPanel('involvement_title'),
+        # FieldPanel('involvement_title'),
     ]
 
     			#####################
