@@ -46,9 +46,7 @@
     <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
 
     <!-- Khanatek Custom CSS -->
-    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/khanatek.css' %}">
-    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/new.css' %}"> -->
     {% block extra_css %}{% endblock %}
 
 </head>
@@ -102,7 +100,6 @@
 
                 <!--First column-->
                 <div class="col-md-3 offset-md-1">
-                <!-- {% include "core/includes/contact_info_block.html" %} -->
                 </div>
                 <!--/.First column-->
 
@@ -110,10 +107,6 @@
 
                 <!--Second column-->
                 <div class="col-md-5 offset-md-1">
-                    <!-- <ul>
-                        <li><a class="nav-link waves-effect waves-light active" href="{{ value.page.url }}"{% if value.page.url in request.path %}{% endif %}>{{ value.page.title }}</a>{% for block in menu.menu %}
-                        {% include_block block %}
-                    {% endfor %}</li> -->
                         <div><a href="/privacy-policy/">Privacy/terms of use</a></div>
                     <!-- </ul> -->
                 </div>
@@ -121,33 +114,8 @@
 
                 <hr class="hidden-md-up">
 
-                <!--Third column-->
-                <!-- <div class="col-md-5">
-                    {% include "core/contact.html" %}
-                </div> -->
-                <!--/.Third column-->
-
             </div>
         </div>
-        <!-- /.Footer Links -->
-
-        <!-- <hr> -->
-
-        <!--Social buttons-->
-        <!-- <div class="social-section">
-            <ul>
-                <li><a class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a></li>
-                <li><a class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
-                <li><a class="btn-floating btn-small btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
-                <li><a class="btn-floating btn-small btn-li"><i class="fa fa-linkedin"> </i></a></li>
-                <li><a class="btn-floating btn-small btn-git"><i class="fa fa-github"> </i></a></li>
-                <li><a class="btn-floating btn-small btn-pin"><i class="fa fa-pinterest"> </i></a></li>
-                <li><a class="btn-floating btn-small btn-ins"><i class="fa fa-instagram"> </i></a></li>
-            </ul>
-        </div>
- -->        <!--/.Social buttons-->
-
-        <!--Copyright-->
         <div class="footer-copyright">
             <div class="container-fluid">
                 © 2017 Copyright: <a href="http://www.khanatek.com"> Khanatek Technologies Inc </a>

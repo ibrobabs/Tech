@@ -26,31 +26,34 @@
 </div>
 
 <section class="extra-margins">
-        <div class="container">
+        <div class="container">        
         {% if self.services.all %}
-            <div class="row">
-                    <div class="col-md-6 mb-r wow zoomIn" data-wow-delay="0.4s">
-                        <div class="card collection-card">
-                             <!--Card-->
+            <div class="row single-post wow fadeInDown" data-wow-delay="0.3s">
+                            <!--First column-->
+                            <div class="col-md-6 mb-r">
+                                <!--Featured image-->
                             {% for service in self.services.all %}
-                                    {% image service.service_image fill-520x344-c100 as background %}
-                                <div class="card-overlay img-fluid" style="background-image: url('{{ background.url }}')">
-                                    <!--Content-->
-                                    <div class="white-text text-center">
-                                        <div class="card-block">
-                                            <h3 class="h3-responsive">{% if service.link %}<a href="{% pageurl service.link %}">{% endif %}{{ service.title }}{% if service.link %}</a>{% endif %}</h3>
-                                            <p>{{ service.description }}</p>
-                                            {% if service.link %}<a href="{% pageurl service.link %}" class="btn btn-lg btn-outline-white"><i class="fa fa-clone left"></i> Find out more </a>{% endif %}
-                                        </div>
-                                    </div>
-
+                                {% image service.service_image fill-520x500 as img %}
+                                <div class="view overlay hm-white-slight">
+                                    <img src="{{ img.url }}" class="img-fluid">
+                                    <a>
+                                        <div class="mask waves-light"></div>
+                                    </a>
                                 </div>
-                                <!--/.Card-->
+                            </div>
+                            <!--/First column-->
+
+                            <!--Second column-->
+                            <div class="col-md-6 mb-r">
+                                <!--Excerpt-->
+                                <h2 class="h2-responsive">{% if service.link %}<a href="{% pageurl service.link %}">{% endif %}{{ service.title }}{% if service.link %}</a>{% endif %}</h2>
+                                <p><medium>{{ service.description }}</medium></p>
+                                {% if service.link %}<a href="{% pageurl service.link %}" class="btn btn-outline-primary waves-effect"><i class="fa fa-clone left"></i> Find out more </a>{% endif %}
+                            </div>
+                            <!--/Second column-->
                             {% endfor %}
-                        </div> 
-                    </div>
-            </div>
+                        </div>
             {% endif %}
         </div>
-</section>
+    </section>
 {% endblock %}

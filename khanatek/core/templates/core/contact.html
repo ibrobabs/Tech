@@ -1,2 +1,84 @@
+{% extends "core/base.html" %}
+{% load static khanatek_tags wagtailcore_tags wagtailimages_tags %}
+{% block content %}
 
 
+<style>
+    .about-hero {
+        {% image page.main_image original as main_image %}
+        background-image: url("{{ main_image.url }}");
+        background-size: cover cover;
+    }
+</style>
+
+<div class="about-hero">
+    <div class="container" style="margin-top: 150px; margin-bottom: 100px">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 fluid">
+                <div class="container">
+                    <div class="card">
+                        <div class="card-block">
+
+                            <!--Header-->
+                            <div class="form-header blue">
+                                <h3><i class="fa fa-envelope"></i> Write to us:</h3>
+                            </div>
+
+                            <!--Body-->
+                            <p>We'll get back you shortly...</p>
+                            <br>
+
+                            <!--Body-->
+                            <form class="contact-form" action="{% pageurl page %}" method="post" id="contact-us-form">
+                            {% csrf_token %}
+                            {% spaceless %}
+                            {% for field in form %}
+                                <div class="md-form {{ field.id_for_label }}">
+                                {{ field.errors }}
+                                    <!-- <i class="fa fa-user prefix"></i> -->
+                                    <!-- <input type="text" id="form3" class="form-control"> -->
+                                    <label for="form3 {{ field.id_for_label }}" class="{% if field.field.required %}contact-form__label--required{% endif %}">{{ field.label }}</label>
+                                    {{ field }}
+                                </div>
+                                <!-- <div class="md-form {{ field.id_for_label }}">
+                                {{ field.errors }}
+                                    <i class="fa fa-envelope prefix"></i>
+                                    <input type="text" id="form2" class="form-control">
+                                    <label for="form2 {{ field.id_for_label }}" class="{% if field.field.required %}contact-form__label--required{% endif %}">{{ field.label }}</label>
+                                    {{ field }}
+                                </div>
+
+                                <div class="md-form {{ field.id_for_label }}">
+                                    <i class="fa fa-tag prefix"></i>
+                                    <input type="text" id="form32" class="form-control">
+                                    <label for="form34">Subject</label>
+                                </div>
+
+                                <div class="md-form">
+                                    <i class="fa fa-pencil prefix"></i>
+                                    <textarea type="text" id="form8" class="md-textarea"></textarea>
+                                    <label for="form8">Message</label>
+                                </div> -->
+                            {% endfor %}
+                            {% endspaceless %}
+                            
+
+                                <div class="text-center">
+                                    <button class="btn btn-primary">Submit</button>
+                                    <div class="call">
+                                        <br>
+                                        <p>Or would you prefer to call?
+                                            <br>
+                                            <span><i class="fa fa-phone"> </i></span> + 01 780 702 0613</p>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

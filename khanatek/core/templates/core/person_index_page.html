@@ -8,7 +8,7 @@
 {% block content %}
 <section class="section extra-margins">
     <div class="container wow fadeInDown" data-wow-delay="0.4s" style="margin-top: 150px;">
-        <h1>{{ page.intro }}</h1>
+        <h1 class="h1-responsive">{{ page.intro }}</h1>
     </div>
 </section>
 
@@ -42,9 +42,9 @@
                 </div> -->
                 {% endif %}
             </a>
-                <h4 class="wow fadeInDown" data-wow-delay="1.5">{{ senior.title }}</h4>
+                <h4 class="wow fadeInDown h4-responsive" data-wow-delay="1.5">{{ senior.title }}</h4>
                     {% if senior.role %}
-                <h5 class="wow fadeInUp" data-wow-delay="1.5">{{ senior.role }}</h5>
+                <h5 class="wow fadeInUp h5-responsive" data-wow-delay="1.5">{{ senior.role }}</h5>
                     {% endif %}              
             </div>
             <!--/First column-->
@@ -84,9 +84,9 @@
                 </div> -->
                 {% endif %}
             </a>
-                <h4 class="wow fadeInDown" data-wow-delay="1.5">{{ person.title }}</h4>
+                <h4 class="wow fadeInDown h4-responsive" data-wow-delay="1.5">{{ person.title }}</h4>
                     {% if person.role %}
-                <h5 class="wow fadeInUp" data-wow-delay="1.5">{{ person.role }}</h5>
+                <h5 class="wow fadeInUp h5-responsive" data-wow-delay="1.5">{{ person.role }}</h5>
                     {% endif %}              
             </div>
             <!--/First column-->
