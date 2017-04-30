@@ -1,10 +1,9 @@
 {% load wagtailcore_tags wagtailimages_tags static %}
 
-{# orange arrow navigation #}
 <div class="row">
 {% for project in projects %}
     {% include 'core/tags/project_list_item.html' %}
 {% empty %}
-    No posts found
+    No projects found
 {% endfor %}
 </div>

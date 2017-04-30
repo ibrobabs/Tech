@@ -2,7 +2,7 @@
 
 {% if jobs %}
 <section class="section">
-<h2 class="section-heading wow fadeInDown" style="display:block; padding-top:-30px;">{{ jobintro }}</h2>
+<h2 class="section-heading wow fadeInDown h2-repsonsive" style="display:block; padding-top:-30px;">{{ jobintro }}</h2>
 </section>
 
 {% for job in jobs %}
@@ -23,7 +23,7 @@
             </a>
             <!--Excerpt-->
             <div class="card-block">
-                <h3>{{ job.job_title }}</h3>
+                <h3 class="h3-responsive">{{ job.job_title }}</h3>
                 <p>{{ job.job_intro }}</p>
                     <a class="btn btn-outline-primary waves-effect" href="{{ job.url }}"><i class="fa fa-clone left"></i> View opening</a>
             </div>

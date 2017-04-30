@@ -9,10 +9,10 @@
             </a>
     </div>
     <!-- <label class="blue-text">Article</label> -->
-        <h3>{{ post.title }}</h3>
+        <h3 class="h3-responsive">{{ post.title }}</h3>
             {% for author in post.related_author.all %}
-        <p>by <a href="{% pageurl author.author %}"><strong>{{ author.author.title }}{% if not forloop.last %},&nbsp;{% endif %}</strong></a>{% endfor %}, {% if post.date %}{{ post.date|date:"D, d M, Y" }}{% endif %}</p>
-        <p>{{ post.body|truncatewords_html:12 }}</p>
+        <p class="p-responsive">by <a href="{% pageurl author.author %}"><strong>{{ author.author.title }}{% if not forloop.last %},&nbsp;{% endif %}</strong></a>{% endfor %}, {% if post.date %}{{ post.date|date:"D, d M, Y" }}{% endif %}</p>
+        <p><small>{{ post.body|truncatewords_html:12 }}</small></p>
         <a href="{% pageurl post %}"><button type="button" class="btn btn-outline-primary waves-effect">Read more</button></a>
 </div>
 

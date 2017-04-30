@@ -28,7 +28,7 @@
         <div class="container">
             <div class="content">
                 <h2 class="h2-responsive animated fadeInUp">{{ page.heading }}</h2>
-                <p class="intro text-center">{{ page.intro }}</p>
+                <p class="intro text-center"><medium>{{ page.intro }}</medium></p>
                 {% if page.related_link_buttons.all %}
                 <div class="btns">
                     {% for button in page.related_link_buttons.all %}
@@ -44,7 +44,7 @@
 
     <section class="section extra-margins">
         <div class="container divider-new wow fadeInUp mt-4 mb-5 wow fadeInDown" data-wow-delay="0.4s">
-            <h1>About Khanatek</h1>
+            <h1 class="h1-responsive">About Khanatek</h1>
         </div>
     </section>
 
@@ -72,8 +72,8 @@
                                 <!--Excerpt-->
                                 <a href="" class="blue-text"><h5><i class="fa fa-clock-o"></i>  {{ content_block.year }}</h5></a>
                                 
-                                <h2>{{ content_block.title }}</h2>
-                                <p>{{ content_block.description }}</p>
+                                <h2 class="h2-responsive">{{ content_block.title }}</h2>
+                                <p><medium>{{ content_block.description }}</medium></p>
                             </div>
                             <!--/Second column-->
                         </div>

@@ -10,32 +10,47 @@
         }
     </style>
 
-    <div class="about-hero" style="margin-top: -50px;">
+
+    <div class="about-hero" style="margin-top: -40px;">
         <div class="" id="tester-unique">
             <div class="container">
                 <div class="content">
-                    <h2>Our services</h2>
+                    <h2 class="wow fadeInDown h2-responsive">Our services</h2>
                 </div>
             </div>
         </div>
+    </div>
+
+<div class="container" style="margin-top:50px;">
+    <hr class="between-sections">
+</div>
+
+<section class="extra-margins">
         <div class="container">
-            {% if self.services.all %}
-            <div class="services">
-                <ul>
-                    {% for service in self.services.all %}
-                    <li>
-                        <div class="services-content">
-                            {{ service.svg|safe }}
-                            <h3>{% if service.link %}<a href="{% pageurl service.link %}" class="service__link--header">{% endif %}{{ service.title }}{% if service.link %}</a>{% endif %}</h3>
-                            <p>{{ service.description }}</p>
-                            {% if service.link %}<a href="{% pageurl service.link %}" class="service__link">Find out more</a>{% endif %}
-                        </div>
-                    </li>
-                    {% endfor %}
-                </ul>
+        {% if self.services.all %}
+            <div class="row">
+                    <div class="col-md-6 mb-r wow zoomIn" data-wow-delay="0.4s">
+                        <div class="card collection-card">
+                             <!--Card-->
+                            {% for service in self.services.all %}
+                                    {% image service.service_image fill-520x344-c100 as background %}
+                                <div class="card-overlay img-fluid" style="background-image: url('{{ background.url }}')">
+                                    <!--Content-->
+                                    <div class="white-text text-center">
+                                        <div class="card-block">
+                                            <h3 class="h3-responsive">{% if service.link %}<a href="{% pageurl service.link %}">{% endif %}{{ service.title }}{% if service.link %}</a>{% endif %}</h3>
+                                            <p>{{ service.description }}</p>
+                                            {% if service.link %}<a href="{% pageurl service.link %}" class="btn btn-lg btn-outline-white"><i class="fa fa-clone left"></i> Find out more </a>{% endif %}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--/.Card-->
+                            {% endfor %}
+                        </div> 
+                    </div>
             </div>
             {% endif %}
         </div>
-    </div>
-
+</section>
 {% endblock %}

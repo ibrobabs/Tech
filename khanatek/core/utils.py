@@ -7,22 +7,22 @@ from itertools import chain, cycle, islice
 
 
 
-# def is_in_play(page):
+def is_in_play(page):
     """
     Check to see if a page is in the Play section. A page is in the Play
     section if it has 'show_in_play_menu' set to True, or one of its
     ancestors does.
     """
-    # if not page:
-    #     return False
+    if not page:
+        return False
 
-    # if getattr(page.specific, 'show_in_play_menu', False):
-    #     return True
+    if getattr(page.specific, 'show_in_play_menu', False):
+        return True
 
-    # return any(
-    #     getattr(ancestor.specific, 'show_in_play_menu', False)
-    #     for ancestor in page.get_ancestors()
-    # )
+    return any(
+        getattr(ancestor.specific, 'show_in_play_menu', False)
+        for ancestor in page.get_ancestors()
+    )
 
 
 def play_filter(pages, number=None):

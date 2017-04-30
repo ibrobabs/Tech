@@ -1,6 +1,10 @@
 {% extends "core/base.html" %}
 {% load static khanatek_tags wagtailcore_tags wagtailimages_tags %}
 
+{% block extra_css %}
+
+{% endblock %}
+
 {% block content %}
 
     {% get_popular_tags self as poptags %}

@@ -18,7 +18,7 @@
 
                         <!--Post data-->
                                 <div class="jumbotron wow fadeIn" data-wow-delay="0.4s">
-                                    <h2 class="{% if self.title|length >= 30 %}long-title{% endif %}">{{ self.title }}</h2>
+                                    <h2 class="{% if self.title|length >= 30 %}long-title{% endif %} h2-responsive">{{ self.title }}</h2>
                                     <p>{% if author.author %}
                                 <a href="{% pageurl author.author %}">{{ author.author.title }}{% if not forloop.last %},&nbsp;{% endif %}</a>{% endif %} {% if self.date %}{{ self.date|date:"D, d M, Y" }}{% endif %}</p>
                                 </div>

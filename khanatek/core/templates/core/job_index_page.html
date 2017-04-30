@@ -32,7 +32,7 @@
 <section class="section extra-margins">
     <div class="container">
         <div class="divider-new wow fadeInUp mt-4 mb-5 wow fadeInDown" data-wow-delay="0.4s">
-            <h2>{{ self.reasons_intro }}</h2>
+            <h2 class="h2-responsive">{{ self.reasons_intro }}</h2>
         </div>
 
         {% for reason in self.reasons_to_join.all %}
@@ -55,7 +55,7 @@
                                 <!--Excerpt-->
                     <a href="" class="blue-text"><h5>{{ forloop.counter|stringformat:"02d" }}</h5></a>
                                 
-                    <h2>{{ reason.title }}</h2>
+                    <h2 class="h2-responsive">{{ reason.title }}</h2>
                     <p>{{ reason.body }}</p>
                 </div>
                 <!--/Second column-->

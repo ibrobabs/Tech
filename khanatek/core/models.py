@@ -294,94 +294,94 @@ class HomePage(Page):
 				#####################
 				#####################
 
-class StandardPageContentBlock(Orderable, ContentBlock):
-    page = ParentalKey('core.StandardPage', related_name='content_block')
+# class StandardPageContentBlock(Orderable, ContentBlock):
+#     page = ParentalKey('core.StandardPage', related_name='content_block')
 
 
-class StandardPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('core.StandardPage', related_name='related_links')
+# class StandardPageRelatedLink(Orderable, RelatedLink):
+#     page = ParentalKey('core.StandardPage', related_name='related_links')
 
 
-class StandardPageClient(Orderable, RelatedLink):
-    page = ParentalKey('core.StandardPage', related_name='clients')
-    image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
+# class StandardPageClient(Orderable, RelatedLink):
+#     page = ParentalKey('core.StandardPage', related_name='clients')
+#     image = models.ForeignKey(
+#         'wagtailimages.Image',
+#         null=True,
+#         blank=True,
+#         on_delete=models.SET_NULL,
+#         related_name='+'
+#     )
 
-    panels = RelatedLink.panels + [
-        ImageChooserPanel('image')
-    ]
+#     panels = RelatedLink.panels + [
+#         ImageChooserPanel('image')
+#     ]
 
 
-class StandardPage(Page):
-    main_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    credit = models.CharField(max_length=255, blank=True)
-    heading = RichTextField(blank=True)
-    quote = models.CharField(max_length=255, blank=True)
-    intro = RichTextField(blank=True)
-    middle_break = RichTextField(blank=True)
-    body = StreamField([
-        ('h2', CharBlock(icon="title", classname="title")),
-        ('h3', CharBlock(icon="title", classname="title")),
-        ('h4', CharBlock(icon="title", classname="title")),
-        ('intro', RichTextBlock(icon="pilcrow")),
-        ('paragraph', RichTextBlock(icon="pilcrow")),
-        ('aligned_image', ImageBlock(label="Aligned image")),
-        ('wide_image', WideImage(label="Wide image")),
-        ('bustout', BustoutBlock()),
-        ('pullquote', PullQuoteBlock()),
-        ('raw_html', RawHTMLBlock(label='Raw HTML', icon="code")),
-        ('embed', EmbedBlock(icon="code")),
-        ('markdown', MarkdownBlock(icon="code")),
-    ])
-    # streamfield = StreamField(StoryBlock())
-    email = models.EmailField(blank=True)
+# class StandardPage(Page):
+#     main_image = models.ForeignKey(
+#         'wagtailimages.Image',
+#         null=True,
+#         blank=True,
+#         on_delete=models.SET_NULL,
+#         related_name='+'
+#     )
+#     credit = models.CharField(max_length=255, blank=True)
+#     heading = RichTextField(blank=True)
+#     quote = models.CharField(max_length=255, blank=True)
+#     intro = RichTextField(blank=True)
+#     middle_break = RichTextField(blank=True)
+#     body = StreamField([
+#         ('h2', CharBlock(icon="title", classname="title")),
+#         ('h3', CharBlock(icon="title", classname="title")),
+#         ('h4', CharBlock(icon="title", classname="title")),
+#         ('intro', RichTextBlock(icon="pilcrow")),
+#         ('paragraph', RichTextBlock(icon="pilcrow")),
+#         ('aligned_image', ImageBlock(label="Aligned image")),
+#         ('wide_image', WideImage(label="Wide image")),
+#         ('bustout', BustoutBlock()),
+#         ('pullquote', PullQuoteBlock()),
+#         ('raw_html', RawHTMLBlock(label='Raw HTML', icon="code")),
+#         ('embed', EmbedBlock(icon="code")),
+#         ('markdown', MarkdownBlock(icon="code")),
+#     ])
+#     # streamfield = StreamField(StoryBlock())
+#     email = models.EmailField(blank=True)
 
-    feed_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
+#     feed_image = models.ForeignKey(
+#         'wagtailimages.Image',
+#         null=True,
+#         blank=True,
+#         on_delete=models.SET_NULL,
+#         related_name='+'
+#     )
 
-    # show_in_play_menu = models.BooleanField(default=False)
+#     # show_in_play_menu = models.BooleanField(default=False)
 
-    search_fields = Page.search_fields + [
-        index.SearchField('intro'),
-        index.SearchField('body'),
-    ]
+#     search_fields = Page.search_fields + [
+#         index.SearchField('intro'),
+#         index.SearchField('body'),
+#     ]
 
-    content_panels = Page.content_panels + [
-        FieldPanel('title', classname="full title"),
-        ImageChooserPanel('main_image'),
-        ImageChooserPanel('feed_image'),
-        FieldPanel('credit', classname="full"),
-        FieldPanel('heading', classname="full"),
-        FieldPanel('quote', classname="full"),
-        FieldPanel('intro'),
-        FieldPanel('middle_break', classname="full"),
-        StreamFieldPanel('body'),
-        FieldPanel('email', classname="full"),
-        InlinePanel('content_block', label="Content block"),
-        InlinePanel('related_links', label="Related links"),
-        InlinePanel('clients', label="Clients"),
-    ]
+#     content_panels = Page.content_panels + [
+#         FieldPanel('title', classname="full title"),
+#         ImageChooserPanel('main_image'),
+#         ImageChooserPanel('feed_image'),
+#         FieldPanel('credit', classname="full"),
+#         FieldPanel('heading', classname="full"),
+#         FieldPanel('quote', classname="full"),
+#         FieldPanel('intro'),
+#         FieldPanel('middle_break', classname="full"),
+#         StreamFieldPanel('body'),
+#         FieldPanel('email', classname="full"),
+#         InlinePanel('content_block', label="Content block"),
+#         InlinePanel('related_links', label="Related links"),
+#         InlinePanel('clients', label="Clients"),
+#     ]
 
-    promote_panels = [
-        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        # FieldPanel('show_in_play_menu'),
-    ]
+#     promote_panels = [
+#         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+#         # FieldPanel('show_in_play_menu'),
+#     ]
 
     			##################
     			##################
@@ -459,10 +459,16 @@ class AboutPage(Page):
 class ServicesPageService(Orderable):
     page = ParentalKey('core.ServicesPage', related_name='services')
     title = models.TextField()
-    svg = models.TextField(null=True)
+    service_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     description = models.TextField()
     link = models.ForeignKey(
-        'core.ServicePage',
+        'core.ProjectPage',
         related_name='+',
         blank=True,
         null=True,
@@ -472,7 +478,7 @@ class ServicesPageService(Orderable):
         FieldPanel('title'),
         FieldPanel('description'),
         PageChooserPanel('link'),
-        FieldPanel('svg')
+        ImageChooserPanel('service_image'),
     ]
 
 
@@ -490,7 +496,6 @@ class ServicesPage(Page):
     search_fields = Page.search_fields + [
         index.SearchField('title'),
         index.SearchField('intro'),
-        index.SearchField('heading'),
     ]
 
     content_panels = [
@@ -508,185 +513,185 @@ class ServicesPage(Page):
 				##############################
 
 
-class CaseStudyBlock(StructBlock):
-    title = CharBlock(required=True)
-    intro = TextBlock(required=True)
-    case_studies = ListBlock(StructBlock([
-        ('page', PageChooserBlock('core.ProjectPage')),
-        ('title', CharBlock(required=False)),
-        ('descriptive_title', CharBlock(required=False)),
-        ('image', ImageChooserBlock(required=False)),
-    ]))
+# class CaseStudyBlock(StructBlock):
+#     title = CharBlock(required=True)
+#     intro = TextBlock(required=True)
+#     case_studies = ListBlock(StructBlock([
+#         ('page', PageChooserBlock('core.ProjectPage')),
+#         ('title', CharBlock(required=False)),
+#         ('descriptive_title', CharBlock(required=False)),
+#         ('image', ImageChooserBlock(required=False)),
+#     ]))
 
-    class Meta:
-        template = 'blocks/case_study_block.html'
-
-
-class HighlightBlock(StructBlock):
-    title = CharBlock(required=True)
-    intro = TextBlock(required=False)
-    highlights = ListBlock(TextBlock())
-
-    class Meta:
-        template = 'blocks/highlight_block.html'
+#     class Meta:
+#         template = 'blocks/case_study_block.html'
 
 
-class StepByStepBlock(StructBlock):
-    title = CharBlock(required=True)
-    intro = TextBlock(required=False)
-    steps = ListBlock(StructBlock([
-        ('subtitle', CharBlock(required=False)),
-        ('title', CharBlock(required=True)),
-        ('icon', CharBlock(max_length=9000, required=True, help_text='Paste SVG code here')),
-        ('description', TextBlock(required=True))
-    ]))
+# class HighlightBlock(StructBlock):
+#     title = CharBlock(required=True)
+#     intro = TextBlock(required=False)
+#     highlights = ListBlock(TextBlock())
 
-    class Meta:
-        template = 'blocks/step_by_step_block.html'
+#     class Meta:
+#         template = 'blocks/highlight_block.html'
 
 
-class PeopleBlock(StructBlock):
-    title = CharBlock(required=True)
-    intro = TextBlock(required=True)
-    people = ListBlock(PageChooserBlock())
+# class StepByStepBlock(StructBlock):
+#     title = CharBlock(required=True)
+#     intro = TextBlock(required=False)
+#     steps = ListBlock(StructBlock([
+#         ('subtitle', CharBlock(required=False)),
+#         ('title', CharBlock(required=True)),
+#         ('icon', CharBlock(max_length=9000, required=True, help_text='Paste SVG code here')),
+#         ('description', TextBlock(required=True))
+#     ]))
 
-    class Meta:
-        template = 'blocks/people_block.html'
-
-
-class FeaturedPagesBlock(StructBlock):
-    title = CharBlock()
-    pages = ListBlock(StructBlock([
-        ('page', PageChooserBlock()),
-        ('image', ImageChooserBlock()),
-        ('text', TextBlock()),
-        ('sub_text', CharBlock(max_length=100)),
-    ]))
-
-    class Meta:
-        template = 'blocks/featured_pages_block.html'
+#     class Meta:
+#         template = 'blocks/step_by_step_block.html'
 
 
-class SignUpFormPageBlock(StructBlock):
-    page = PageChooserBlock('core.SignUpFormPage')
+# class PeopleBlock(StructBlock):
+#     title = CharBlock(required=True)
+#     intro = TextBlock(required=True)
+#     people = ListBlock(PageChooserBlock())
 
-    def get_context(self, value, parent_context=None):
-        context = super(SignUpFormPageBlock, self).get_context(value, parent_context)
-        context['form'] = value['page'].sign_up_form_class()
-
-        return context
-
-    class Meta:
-        icon = 'doc-full'
-        template = 'blocks/sign_up_form_page_block.html'
+#     class Meta:
+#         template = 'blocks/people_block.html'
 
 
-class LogosBlock(StructBlock):
-    title = CharBlock()
-    intro = CharBlock()
-    logos = ListBlock(StructBlock((
-        ('image', ImageChooserBlock()),
-        ('link_page', PageChooserBlock(required=False)),
-        ('link_external', URLBlock(required=False)),
-    )))
+# class FeaturedPagesBlock(StructBlock):
+#     title = CharBlock()
+#     pages = ListBlock(StructBlock([
+#         ('page', PageChooserBlock()),
+#         ('image', ImageChooserBlock()),
+#         ('text', TextBlock()),
+#         ('sub_text', CharBlock(max_length=100)),
+#     ]))
 
-    class Meta:
-        icon = 'site'
-        template = 'blocks/logos_block.html'
-
-class ServicePageBlock(StreamBlock):
-    case_studies = CaseStudyBlock()
-    highlights = HighlightBlock()
-    pull_quote = PullQuoteBlock(template='blocks/pull_quote_block.html')
-    process = StepByStepBlock()
-    people = PeopleBlock()
-    featured_pages = FeaturedPagesBlock()
-    sign_up_form_page = SignUpFormPageBlock()
-    logos = LogosBlock()
+#     class Meta:
+#         template = 'blocks/featured_pages_block.html'
 
 
-class ServicePage(Page):
-    description = models.TextField()
-    streamfield = StreamField(ServicePageBlock())
-    particle = models.ForeignKey(
-        'ParticleSnippet',
-        blank=True,
-        null=True,
-        on_delete=models.SET_NULL)
+# class SignUpFormPageBlock(StructBlock):
+#     page = PageChooserBlock('core.SignUpFormPage')
 
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('description', classname="full"),
-        StreamFieldPanel('streamfield'),
-        FieldPanel('particle'),
-    ]
+#     def get_context(self, value, parent_context=None):
+#         context = super(SignUpFormPageBlock, self).get_context(value, parent_context)
+#         context['form'] = value['page'].sign_up_form_class()
 
-@register_snippet
-class ParticleSnippet(models.Model):
+#         return context
+
+#     class Meta:
+#         icon = 'doc-full'
+#         template = 'blocks/sign_up_form_page_block.html'
+
+
+# class LogosBlock(StructBlock):
+#     title = CharBlock()
+#     intro = CharBlock()
+#     logos = ListBlock(StructBlock((
+#         ('image', ImageChooserBlock()),
+#         ('link_page', PageChooserBlock(required=False)),
+#         ('link_external', URLBlock(required=False)),
+#     )))
+
+#     class Meta:
+#         icon = 'site'
+#         template = 'blocks/logos_block.html'
+
+# class ServicePageBlock(StreamBlock):
+#     case_studies = CaseStudyBlock()
+#     highlights = HighlightBlock()
+#     pull_quote = PullQuoteBlock(template='blocks/pull_quote_block.html')
+#     process = StepByStepBlock()
+#     people = PeopleBlock()
+#     featured_pages = FeaturedPagesBlock()
+#     sign_up_form_page = SignUpFormPageBlock()
+#     logos = LogosBlock()
+
+
+# class ServicePage(Page):
+#     description = models.TextField()
+#     streamfield = StreamField(ServicePageBlock())
+#     # particle = models.ForeignKey(
+#     #     'ParticleSnippet',
+#     #     blank=True,
+#     #     null=True,
+#     #     on_delete=models.SET_NULL)
+
+#     content_panels = [
+#         FieldPanel('title', classname="full title"),
+#         FieldPanel('description', classname="full"),
+#         StreamFieldPanel('streamfield'),
+#         # FieldPanel('particle'),
+#     ]
+
+# @register_snippet
+# class ParticleSnippet(models.Model):
     """
     Snippet for configuring particlejs options
     """
     # particle type choices
-    CIRCLE = 1
-    EDGE = 2
-    TRIANGLE = 3
-    POLYGON = 4
-    STAR = 5
-    IMAGE = 6
-    PARTICLES_TYPE_CHOICES = (
-        (CIRCLE, 'circle'),
-        (EDGE, 'edge'),
-        (TRIANGLE, 'triangle'),
-        (POLYGON, 'polygon'),
-        (STAR, 'star'),
-        (IMAGE, 'image'),
-    )
-    # particle movement direction choices
-    NONE = 1
-    TOP = 2
-    TOP_RIGHT = 3
-    RIGHT = 4
-    BOTTOM_RIGHT = 5
-    BOTTOM = 6
-    BOTTOM_LEFT = 7
-    LEFT = 8
-    PARTICLES_MOVE_DIRECTION_CHOICES = (
-        (NONE, 'none'),
-        (TOP, 'top'),
-        (TOP_RIGHT, 'top-right'),
-        (RIGHT, 'right'),
-        (BOTTOM_RIGHT, 'bottom-right'),
-        (BOTTOM, 'bottom'),
-        (BOTTOM_LEFT, 'bottom-left'),
-        (LEFT, 'left'),
-    )
-    title = models.CharField(max_length=50)
-    number = models.PositiveSmallIntegerField(default=50)
-    shape_type = models.PositiveSmallIntegerField(
-        choices=PARTICLES_TYPE_CHOICES, default=CIRCLE)
-    polygon_sides = models.PositiveSmallIntegerField(default=5)
-    size = models.DecimalField(default=2.5, max_digits=4, decimal_places=1)
-    size_random = models.BooleanField(default=False)
-    colour = ColorField(default='ffffff', help_text="Don't include # symbol.")
-    opacity = models.DecimalField(default=0.9, max_digits=2, decimal_places=1)
-    opacity_random = models.BooleanField(default=False)
-    move_speed = models.DecimalField(
-        default=2.5, max_digits=2, decimal_places=1)
-    move_direction = models.PositiveSmallIntegerField(
-        choices=PARTICLES_MOVE_DIRECTION_CHOICES,
-        default=NONE)
-    line_linked = models.BooleanField(default=True)
-    css_background_colour = ColorField(
-        blank=True,
-        help_text="Don't include # symbol. Will be overridden by linear gradient")
-    css_background_linear_gradient = models.CharField(
-        blank=True,
-        max_length=255,
-        help_text="Enter in the format 'to right, #2b2b2b 0%, #243e3f 28%, #2b2b2b 100%'")
-    css_background_url = models.URLField(blank=True, max_length=255)
+    # CIRCLE = 1
+    # EDGE = 2
+    # TRIANGLE = 3
+    # POLYGON = 4
+    # STAR = 5
+    # IMAGE = 6
+    # PARTICLES_TYPE_CHOICES = (
+    #     (CIRCLE, 'circle'),
+    #     (EDGE, 'edge'),
+    #     (TRIANGLE, 'triangle'),
+    #     (POLYGON, 'polygon'),
+    #     (STAR, 'star'),
+    #     (IMAGE, 'image'),
+    # )
+    # # particle movement direction choices
+    # NONE = 1
+    # TOP = 2
+    # TOP_RIGHT = 3
+    # RIGHT = 4
+    # BOTTOM_RIGHT = 5
+    # BOTTOM = 6
+    # BOTTOM_LEFT = 7
+    # LEFT = 8
+    # PARTICLES_MOVE_DIRECTION_CHOICES = (
+    #     (NONE, 'none'),
+    #     (TOP, 'top'),
+    #     (TOP_RIGHT, 'top-right'),
+    #     (RIGHT, 'right'),
+    #     (BOTTOM_RIGHT, 'bottom-right'),
+    #     (BOTTOM, 'bottom'),
+    #     (BOTTOM_LEFT, 'bottom-left'),
+    #     (LEFT, 'left'),
+    # )
+    # title = models.CharField(max_length=50)
+    # number = models.PositiveSmallIntegerField(default=50)
+    # shape_type = models.PositiveSmallIntegerField(
+    #     choices=PARTICLES_TYPE_CHOICES, default=CIRCLE)
+    # polygon_sides = models.PositiveSmallIntegerField(default=5)
+    # size = models.DecimalField(default=2.5, max_digits=4, decimal_places=1)
+    # size_random = models.BooleanField(default=False)
+    # colour = ColorField(default='ffffff', help_text="Don't include # symbol.")
+    # opacity = models.DecimalField(default=0.9, max_digits=2, decimal_places=1)
+    # opacity_random = models.BooleanField(default=False)
+    # move_speed = models.DecimalField(
+    #     default=2.5, max_digits=2, decimal_places=1)
+    # move_direction = models.PositiveSmallIntegerField(
+    #     choices=PARTICLES_MOVE_DIRECTION_CHOICES,
+    #     default=NONE)
+    # line_linked = models.BooleanField(default=True)
+    # css_background_colour = ColorField(
+    #     blank=True,
+    #     help_text="Don't include # symbol. Will be overridden by linear gradient")
+    # css_background_linear_gradient = models.CharField(
+    #     blank=True,
+    #     max_length=255,
+    #     help_text="Enter in the format 'to right, #2b2b2b 0%, #243e3f 28%, #2b2b2b 100%'")
+    # css_background_url = models.URLField(blank=True, max_length=255)
 
-    def __str__(self):
-        return self.title
+    # def __str__(self):
+    #     return self.title
 
 
 
@@ -933,7 +938,7 @@ class JobIndexPageJob(Orderable):
     page = ParentalKey('core.JobIndexPage', related_name='job')
     job_title = models.CharField(max_length=255)
     job_intro = models.CharField(max_length=255)
-    url = models.URLField(null=True)
+    url = models.URLField(null=True, blank=True)
     location = models.CharField(max_length=255, blank=True)
 
     panels = [
@@ -1263,175 +1268,175 @@ class PersonIndexPage(Page):
 				########################################
 
 
-class SignUpFormPageBullet(Orderable):
-    page = ParentalKey('core.SignUpFormPage', related_name='bullet_points')
-    icon = models.CharField(max_length=100, choices=(
-        ('core/includes/svg/bulb-svg.html', 'Light bulb'),
-        ('core/includes/svg/pro-svg.html', 'Chart'),
-        ('core/includes/svg/tick-svg.html', 'Tick'),
-    ))
-    title = models.CharField(max_length=100)
-    body = models.TextField()
+# class SignUpFormPageBullet(Orderable):
+#     page = ParentalKey('core.SignUpFormPage', related_name='bullet_points')
+#     icon = models.CharField(max_length=100, choices=(
+#         ('core/includes/svg/bulb-svg.html', 'Light bulb'),
+#         ('core/includes/svg/pro-svg.html', 'Chart'),
+#         ('core/includes/svg/tick-svg.html', 'Tick'),
+#     ))
+#     title = models.CharField(max_length=100)
+#     body = models.TextField()
 
-    panels = [
-        FieldPanel('icon'),
-        FieldPanel('title'),
-        FieldPanel('body'),
-    ]
-
-
-class SignUpFormPageLogo(Orderable):
-    page = ParentalKey('core.SignUpFormPage', related_name='logos')
-    logo = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    panels = [
-        ImageChooserPanel('logo'),
-    ]
+#     panels = [
+#         FieldPanel('icon'),
+#         FieldPanel('title'),
+#         FieldPanel('body'),
+#     ]
 
 
-class SignUpFormPageQuote(Orderable):
-    page = ParentalKey('core.SignUpFormPage', related_name='quotes')
-    quote = models.TextField()
-    author = models.CharField(max_length=100)
-    organisation = models.CharField(max_length=100)
+# class SignUpFormPageLogo(Orderable):
+#     page = ParentalKey('core.SignUpFormPage', related_name='logos')
+#     logo = models.ForeignKey(
+#         'wagtailimages.Image',
+#         null=True,
+#         blank=True,
+#         on_delete=models.SET_NULL,
+#         related_name='+'
+#     )
 
-    panels = [
-        FieldPanel('quote'),
-        FieldPanel('author'),
-        FieldPanel('organisation'),
-    ]
-
-
-class SignUpFormPageResponse(models.Model):
-    date = models.DateTimeField(auto_now_add=True)
-    email = models.EmailField()
-
-    class Meta:
-        ordering = ['-date']
-
-    def __str__(self):
-        return self.email
+#     panels = [
+#         ImageChooserPanel('logo'),
+#     ]
 
 
-class SignUpFormPageForm(forms.ModelForm):
-    class Meta:
-        model = SignUpFormPageResponse
-        fields = [
-            'email',
-        ]
-        widgets = {
-            'email': forms.TextInput(attrs={'placeholder': "Enter your email address"}),
-        }
+# class SignUpFormPageQuote(Orderable):
+#     page = ParentalKey('core.SignUpFormPage', related_name='quotes')
+#     quote = models.TextField()
+#     author = models.CharField(max_length=100)
+#     organisation = models.CharField(max_length=100)
+
+#     panels = [
+#         FieldPanel('quote'),
+#         FieldPanel('author'),
+#         FieldPanel('organisation'),
+#     ]
 
 
-class SignUpFormPage(Page):
-    formatted_title = models.CharField(
-        max_length=255, blank=True,
-        help_text="This is the title displayed on the page, not the document "
-        "title tag. HTML is permitted (Remember Ibraheem)."
-    )
-    intro = RichTextField()
-    call_to_action_text = models.CharField(
-        max_length=255, help_text="Displayed above the email submission form."
-    )
-    call_to_action_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    form_button_text = models.CharField(max_length=255)
-    thank_you_text = models.CharField(max_length=255,
-                                      help_text="Displayed on successful form submission.")
-    email_subject = models.CharField(max_length=100, verbose_name='subject')
-    email_body = models.TextField(verbose_name='body')
-    email_attachment = models.ForeignKey(
-        'wagtaildocs.Document',
-        null=True,
-        related_name='+',
-        on_delete=models.SET_NULL,
-        verbose_name='attachment',
-    )
-    email_from_address = models.EmailField(
-        verbose_name='from address',
-        help_text="Anything ending in @khanatek.com is good.")
+# class SignUpFormPageResponse(models.Model):
+#     date = models.DateTimeField(auto_now_add=True)
+#     email = models.EmailField()
 
-    sign_up_form_class = SignUpFormPageForm
+#     class Meta:
+#         ordering = ['-date']
 
-    content_panels = [
-        MultiFieldPanel([
-            FieldPanel('title', classname="title"),
-            FieldPanel('formatted_title'),
-        ], 'Title'),
-        FieldPanel('intro', classname="full"),
-        InlinePanel('bullet_points', label="Bullet points"),
-        InlinePanel('logos', label="Logos"),
-        InlinePanel('quotes', label="Quotes"),
-        MultiFieldPanel([
-            FieldPanel('call_to_action_text'),
-            ImageChooserPanel('call_to_action_image'),
-            FieldPanel('form_button_text'),
-            FieldPanel('thank_you_text'),
-        ], 'Form'),
-        MultiFieldPanel([
-            FieldPanel('email_subject'),
-            FieldPanel('email_body'),
-            DocumentChooserPanel('email_attachment'),
-            FieldPanel('email_from_address'),
-        ], 'Email'),
-    ]
+#     def __str__(self):
+#         return self.email
 
-    def get_context(self, request, *args, **kwargs):
-        context = super(SignUpFormPage, self).get_context(request, *args, **kwargs)
-        context['form'] = self.sign_up_form_class()
-        return context
 
-    @vary_on_headers('X-Requested-With')
-    def serve(self, request, *args, **kwargs):
-        if request.is_ajax() and request.method == "POST":
-            form = self.sign_up_form_class(request.POST)
+# class SignUpFormPageForm(forms.ModelForm):
+#     class Meta:
+#         model = SignUpFormPageResponse
+#         fields = [
+#             'email',
+#         ]
+#         widgets = {
+#             'email': forms.TextInput(attrs={'placeholder': "Enter your email address"}),
+#         }
 
-            if form.is_valid():
-                form.save()
-                self.send_email_response(form.cleaned_data['email'])
-                return render(
-                    request,
-                    'core/includes/sign_up_form_page_landing.html',
-                    {
-                        'page': self,
-                        'form': form,
-                        'legend': self.call_to_action_text
-                     }
-                )
-            else:
-                return render(
-                    request,
-                    'core/includes/sign_up_form_page_form.html',
-                    {
-                        'page': self,
-                        'form': form,
-                        'legend': self.call_to_action_text
-                    }
-                )
-        else:
-            return super(SignUpFormPage, self).serve(request)
 
-    def send_email_response(self, to_address):
-        email_message = EmailMessage(
-            subject=self.email_subject,
-            body=self.email_body,
-            from_email=self.email_from_address,
-            to=[to_address],
-        )
-        email_message.attach_file(self.email_attachment.file.path)
-        email_message.send()
+# class SignUpFormPage(Page):
+#     formatted_title = models.CharField(
+#         max_length=255, blank=True,
+#         help_text="This is the title displayed on the page, not the document "
+#         "title tag. HTML is permitted (Remember Ibraheem)."
+#     )
+#     intro = RichTextField()
+#     call_to_action_text = models.CharField(
+#         max_length=255, help_text="Displayed above the email submission form."
+#     )
+#     call_to_action_image = models.ForeignKey(
+#         'wagtailimages.Image',
+#         null=True,
+#         blank=True,
+#         on_delete=models.SET_NULL,
+#         related_name='+'
+#     )
+#     form_button_text = models.CharField(max_length=255)
+#     thank_you_text = models.CharField(max_length=255,
+#                                       help_text="Displayed on successful form submission.")
+#     email_subject = models.CharField(max_length=100, verbose_name='subject')
+#     email_body = models.TextField(verbose_name='body')
+#     email_attachment = models.ForeignKey(
+#         'wagtaildocs.Document',
+#         null=True,
+#         related_name='+',
+#         on_delete=models.SET_NULL,
+#         verbose_name='attachment',
+#     )
+#     email_from_address = models.EmailField(
+#         verbose_name='from address',
+#         help_text="Anything ending in @khanatek.com is good.")
+
+#     sign_up_form_class = SignUpFormPageForm
+
+#     content_panels = [
+#         MultiFieldPanel([
+#             FieldPanel('title', classname="title"),
+#             FieldPanel('formatted_title'),
+#         ], 'Title'),
+#         FieldPanel('intro', classname="full"),
+#         InlinePanel('bullet_points', label="Bullet points"),
+#         InlinePanel('logos', label="Logos"),
+#         InlinePanel('quotes', label="Quotes"),
+#         MultiFieldPanel([
+#             FieldPanel('call_to_action_text'),
+#             ImageChooserPanel('call_to_action_image'),
+#             FieldPanel('form_button_text'),
+#             FieldPanel('thank_you_text'),
+#         ], 'Form'),
+#         MultiFieldPanel([
+#             FieldPanel('email_subject'),
+#             FieldPanel('email_body'),
+#             DocumentChooserPanel('email_attachment'),
+#             FieldPanel('email_from_address'),
+#         ], 'Email'),
+#     ]
+
+#     def get_context(self, request, *args, **kwargs):
+#         context = super(SignUpFormPage, self).get_context(request, *args, **kwargs)
+#         context['form'] = self.sign_up_form_class()
+#         return context
+
+#     @vary_on_headers('X-Requested-With')
+#     def serve(self, request, *args, **kwargs):
+#         if request.is_ajax() and request.method == "POST":
+#             form = self.sign_up_form_class(request.POST)
+
+#             if form.is_valid():
+#                 form.save()
+#                 self.send_email_response(form.cleaned_data['email'])
+#                 return render(
+#                     request,
+#                     'core/includes/sign_up_form_page_landing.html',
+#                     {
+#                         'page': self,
+#                         'form': form,
+#                         'legend': self.call_to_action_text
+#                      }
+#                 )
+#             else:
+#                 return render(
+#                     request,
+#                     'core/includes/sign_up_form_page_form.html',
+#                     {
+#                         'page': self,
+#                         'form': form,
+#                         'legend': self.call_to_action_text
+#                     }
+#                 )
+#         else:
+#             return super(SignUpFormPage, self).serve(request)
+
+#     def send_email_response(self, to_address):
+#         email_message = EmailMessage(
+#             subject=self.email_subject,
+#             body=self.email_body,
+#             from_email=self.email_from_address,
+#             to=[to_address],
+#         )
+#         email_message.attach_file(self.email_attachment.file.path)
+#         email_message.send()
 
 
         		########################################
