@@ -1,6 +1,7 @@
 *.pyc .DS_Store
 *.swp
-/venv/
+.env
+/env/
 /static/
 /media/
 .envdb.sqlite3
