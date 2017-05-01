@@ -21,12 +21,12 @@ ALLOWED_HOSTS = ['khanatek.herokuapp.com']
 
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-COMPRESS_OFFLINE = True
-COMPRESS_CSS_FILTERS = [
-    'compressor.filters.css_default.CssAbsoluteFilter',
-    'compressor.filters.cssmin.CSSMinFilter',
-]
-COMPRESS_CSS_HASHING_METHOD = 'content'
+# COMPRESS_OFFLINE = True
+# COMPRESS_CSS_FILTERS = [
+#     'compressor.filters.css_default.CssAbsoluteFilter',
+#     'compressor.filters.cssmin.CSSMinFilter',
+# ]
+# COMPRESS_CSS_HASHING_METHOD = 'content'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
