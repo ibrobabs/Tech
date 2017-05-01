@@ -47,7 +47,7 @@ wagtail==1.9.1
 wagtailfontawesome==1.0.6
 wagtailmodeladmin==2.5.7
 webencodings==0.5.1
-whitenoise==3.3.0
+
 Willow==0.4
 
 # Wagtail-markdown
