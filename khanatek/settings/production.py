@@ -4,7 +4,7 @@ import os
 
 from .base import *
 
-import khanatek.utils
+# import khanatek.utils
 
 from decouple import config
 
@@ -21,8 +21,8 @@ ALLOWED_HOSTS = ['khanatek.herokuapp.com']
 
 # ALLOWED_HOSTS = []
 
-STATICFILES_STORAGE = 'StaticRootS3BotoStorage'
-COMPRESS_STORAGE = STATICFILES_STORAGE
+# STATICFILES_STORAGE = 'StaticRootS3BotoStorage'
+# COMPRESS_STORAGE = STATICFILES_STORAGE
 
 # COMPRESS_OFFLINE = True
 # COMPRESS_CSS_FILTERS = [
