@@ -15,9 +15,13 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "Ibro <babskolawole@gmail.com>"
 
-ADMINS = [('khanatek', EMAIL_HOST_USER)]
+ADMINS = (
+    ('khanatek', EMAIL_HOST_USER)
+    )
+
 MANAGERS=ADMINS
 
+DEBUG = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/

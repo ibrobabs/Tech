@@ -28,6 +28,8 @@ COMPRESS_CSS_FILTERS = [
 ]
 COMPRESS_CSS_HASHING_METHOD = 'content'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 try:
     from .local import *
 except ImportError:

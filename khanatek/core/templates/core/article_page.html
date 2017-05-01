@@ -29,8 +29,11 @@
                                         {{ self.intro|richtext }}
                                     
                                     {% endif %}
+                                    {% if self.body %}
 
-                                        {% include "core/includes/stream.html" %}
+                                        {% include "core/includes/stream.html" with content=self.body %}
+
+                                    {% endif %}
 
                                     </div>
                                         <!--/Post text-->
