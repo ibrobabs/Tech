@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'taggit',
     'raven.contrib.django.raven_compat',
     'storages',
-    'rest_framework',
+    # 'rest_framework',
 
     'django.contrib.humanize',
     'django.contrib.admin',
@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.settings',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.wagtailstyleguide',
-    'wagtail.contrib.wagtailapi',
+    # 'wagtail.contrib.wagtailapi',
 ]
 
 MIDDLEWARE = [
