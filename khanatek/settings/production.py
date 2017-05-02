@@ -35,15 +35,20 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 
+# WAGTAILSEARCH_BACKENDS = {
+#     'default': {
+#         'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
+#         'URLS': ['http://localhost:9200'],
+#         'INDEX': 'khanatek',
+#         'TIMEOUT': 5,
+#     }
+# }
+
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
-        'URLS': ['http://localhost:9200'],
-        'INDEX': 'khanatek',
-        'TIMEOUT': 5,
+        'BACKEND': 'wagtail.wagtailsearch.backends.db',
     }
 }
-
 
 # CACHES = {
 #     'default': {
