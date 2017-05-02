@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'taggit',
     'raven.contrib.django.raven_compat',
     'storages',
+    'rest_framework',
 
     'django.contrib.humanize',
     'django.contrib.admin',
