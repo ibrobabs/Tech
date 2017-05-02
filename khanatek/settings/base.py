@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.settings',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.wagtailstyleguide',
+    'wagtail.contrib.wagtailapi',
 ]
 
 MIDDLEWARE = [
@@ -200,12 +201,12 @@ AWS_HEADERS = {
 
 
 
-WAGTAILSEARCH_BACKENDS = {
-    'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
-        'INDEX': '{{ khanatek }}',
-    },
-}
+# WAGTAILSEARCH_BACKENDS = {
+#     'default': {
+#         'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
+#         'INDEX': '{{ khanatek }}',
+#     },
+# }
 
 # import urllib.parse
 # redis_url = urllib.parse.urllib.parse(os.environ.get('REDIS_URL'))
