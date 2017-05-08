@@ -1,10 +1,28 @@
-/*html,
-body,
-header,
-
-.view {
+html,
+body
+{
     height: 100%;
-}*/
+    padding:0;
+    margin: 0;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+section {
+    height: 100%;
+    position: relative;
+    /*text-align: center; */
+
+     Center the content of the sections
+    .inner {
+        margin: 0 auto;
+        max-width: 85%;
+    }
+}
+
 /* Navigation*/
         
 .navbar {
