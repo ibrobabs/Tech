@@ -10,7 +10,7 @@ import os
 DEBUG = True
 TEMPLATES[0]['OPTIONS']['debug'] = True
 
-# SECRET_KEY='SECRET'
+SECRET_KEY='SECRET'
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
