@@ -875,6 +875,11 @@ footer.page-footer {
         margin: 40px 0 0;
         font-size: 65px; } }
 
+
+.intro .rich-text h2 {
+text-align: center;
+}
+
 .intro .rich-text p {
 font-size:20px;
 margin-bottom:25px;
