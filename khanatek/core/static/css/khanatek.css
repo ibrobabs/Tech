@@ -2,8 +2,8 @@ html,
 body
 {
     height: 100%;
-    padding:0;
-    margin: 0;
+/*    padding:0;
+    margin: 0;*/
 }
 
 body {
@@ -11,18 +11,18 @@ body {
     text-rendering: optimizeLegibility;
 }
 
-section {
+/*section {
     height: 100%;
     position: relative;
-    /*text-align: center; */
+*/    /*text-align: center; */
 
-     Center the content of the sections
+/*     Center the content of the sections
     .inner {
         margin: 0 auto;
         max-width: 85%;
     }
 }
-
+*/
 /* Navigation*/
         
 .navbar {
@@ -770,10 +770,9 @@ footer.page-footer {
     padding-bottom: 0; }
   .about-hero h2 {
     color: white;
-    padding-top: 330px;
-    font-size: 20px;
-    font-weight: 300;
-    text-align: center; }
+    margin: 40px 0 0;
+    font-size: 35px;
+    font-weight: 300; }
     .about-hero h2 span {
       font-weight: 300; }
     .about-hero h2.thanks {
@@ -804,7 +803,7 @@ footer.page-footer {
         left: calc(50% - 25px);
         width: 50px;
         height: 20px;
-        background: url("/static/khanatek/images/down-chevron-blue.svg") center no-repeat; }
+        background: url("/static/torchbox/images/down-chevron-blue.svg") center no-repeat; }
       @media (min-width: 768px) {
         .about-hero h2.story {
           font-size: 32px;
@@ -817,7 +816,7 @@ footer.page-footer {
     color: white;
     max-width: 900px;
     font-size: 18px;
-    margin: 100px auto 0; }
+    margin: 30px auto 0; }
     @media (min-width: 768px) {
       .about-hero .intro {
         font-size: 22px; } }
@@ -825,15 +824,15 @@ footer.page-footer {
     text-align: center;
     margin: 30px auto 0; }
     .about-hero .btns .btn {
-      border: 1px solid #4668d6;
+      border: 1px solid #fd5938;
       padding: 15px 50px;
       margin: 0 auto 10px;
-      background: #4668d6;
+      background: #fd5938;
       color: white;
       font-size: 24px; }
       .about-hero .btns .btn:hover {
-        border: 1px solid #4668d6;
-        background: #4668d6; }
+        border: 1px solid #fd5938;
+        background: #fd5938; }
   .about-hero:before {
     content: '';
     position: absolute;
@@ -872,8 +871,9 @@ footer.page-footer {
       margin-bottom: 0;
       background-size: cover; }
       .about-hero h2 {
-        margin: 40px 0 0;
+        margin: 60px 0 0;
         font-size: 65px; } }
+
 
 
 .intro .rich-text h2 {
