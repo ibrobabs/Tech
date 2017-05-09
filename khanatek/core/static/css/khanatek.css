@@ -63,7 +63,7 @@ footer.page-footer {
 }
 @media (min-width: 768px) {
     .home-hero {
-        height: calc(100vh - 90px);
+        height: calc(90vh - 90px);
         margin: 0 0 50px 0;
     }
 }
