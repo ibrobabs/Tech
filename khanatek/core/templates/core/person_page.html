@@ -10,7 +10,7 @@
                 <div class="col-md-10 offset-md-1">
                     
                     <!-- Section: Author page -->
-                    <section class="section team-page author-page mb-4"> 
+                    <section class="section team-page author-page"> 
                         <!-- Image -->
                         {% if self.image %}
                         <div class="view overlay hm-white-light wow fadeIn">
@@ -32,12 +32,13 @@
                                     {{ self.intro|richtext }}
                                 {% endif %}
                             </div>
-
+                        </div>
+                        <div class="richtext" style="text-align: justify;">
                             {% if self.biography %}
                                 {{ self.biography|richtext }}
                             {% endif %}
-
                         </div>
+                        
                     </section>
                     <hr>
                     <div class="text-center wow fadeIn" data-wow-delay="0.3s">
