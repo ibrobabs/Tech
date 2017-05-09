@@ -881,13 +881,13 @@ text-align: justify;
 }
 
 .intro .rich-text p {
-font-size:14px;
+font-size:20px;
 margin-bottom:25px;
 }
 
 
 .rich-text p,.stream-field p {
-font-size:14px;
+font-size:16px;
 text-align: justify;
 }
 
@@ -940,16 +940,16 @@ max-width:100%;
 font-weight:400;
 line-height:1.5;
 margin-bottom:20px;
-font-size:18px;
+font-size:20px;
 }
 
 .rich-text blockquote cite,.stream-field blockquote cite {
 font-weight:500;
 font-style:normal;
-font-size:13px;
+font-size:14px;
 line-height:1.4;
 text-transform:uppercase;
-letter-spacing:.5px;
+letter-spacing:.4px;
 display:inline-block;
 color:#000;
 }
@@ -978,7 +978,7 @@ margin:0 0 15px;
 
 .rich-text .img-holder p,.stream-field .img-holder p {
 font-style:italic;
-font-size:14px;
+font-size:16px;
 position:relative;
 text-align:center;
 opacity:0.8;
@@ -1003,7 +1003,7 @@ position:relative;
 }
 
 .rich-text p,.stream-field p,.rich-text li,.stream-field li {
-font-size:14px;
+font-size:21px;
 }
 
 .page-signupformpage .rich-text {
