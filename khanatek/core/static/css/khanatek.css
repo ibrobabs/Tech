@@ -42,6 +42,10 @@ body {
         background-color: #154771;
 
     }
+    .navbar-brand img {
+        width: 100px;
+        height: 36px;
+    }
 }
 
 /*Intro*/
