@@ -11,7 +11,7 @@
     </style>
 
 
-    <div class="about-hero" style="margin-top: -40px;">
+<!--     <div class="about-hero" style="margin-top: -40px;">
         <div class="" id="tester-unique">
             <div class="container">
                 <div class="content">
@@ -19,14 +19,20 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-<div class="container" style="margin-top:50px;">
+<!-- <div class="container" style="margin-top:50px;">
     <hr class="between-sections">
-</div>
+</div> -->
+
+<section class="section extra-margins" style="margin-top: 150px;">
+    <div class="container divider-new wow fadeInUp mt-4 mb-5 wow fadeInDown" data-wow-delay="0.4s">
+        <h1 class="h1-responsive">Our Services</h1>
+    </div>
+</section>
 
 {% if self.services.all %}
-<section class="extra-margins">
+<section class="extra-margins" style="margin-top: -10px;">
         <div class="container">        
             {% for service in self.services.all %}
             <div class="row single-post wow fadeInDown" data-wow-delay="0.3s">
