@@ -1,5 +1,5 @@
 {% extends "core/base.html" %}
-{% load static khanatek_tags wagtailcore_tags wagtailimages_tags %}
+{% load khanatek_tags wagtailcore_tags wagtailimages_tags static from staticfiles %}
 {% block content %}
 
 
@@ -9,6 +9,7 @@
         background-image: url("{{ main_image.url }}");
         background-size: cover cover;
         margin-bottom: -20px;
+
     }
 </style>
 
