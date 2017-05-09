@@ -8,6 +8,7 @@
 
 {% block content %}
 
+
     {% get_popular_tags self as poptags %}
 
     <div class="container" style="margin-top: 150px;">
@@ -81,4 +82,9 @@
             </li>
         </ul>
     </nav>
+
+{% spaceless %}
+
+{% endspaceless %}
+
 {% endblock %}
