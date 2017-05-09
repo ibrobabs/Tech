@@ -47,7 +47,7 @@
                             <div class="col-md-6 mb-r">
                                 <!--Excerpt-->
                                 <h2 class="h2-responsive">{% if service.link %}<a href="{% pageurl service.link %}">{% endif %}{{ service.title }}{% if service.link %}</a>{% endif %}</h2>
-                                <p><medium>{{ service.description }}</medium></p>
+                                <h5 class="h5-responsive">{{ service.description }}</h5>
                                 {% if service.link %}<a href="{% pageurl service.link %}" class="btn btn-outline-primary waves-effect"><i class="fa fa-clone left"></i> Find out more </a>{% endif %}
                             </div>
                             <!--/Second column-->
