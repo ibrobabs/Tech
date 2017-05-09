@@ -25,35 +25,36 @@
     <hr class="between-sections">
 </div>
 
+{% if self.services.all %}
 <section class="extra-margins">
         <div class="container">        
-        {% if self.services.all %}
+            {% for service in self.services.all %}
             <div class="row single-post wow fadeInDown" data-wow-delay="0.3s">
-                            <!--First column-->
-                            <div class="col-md-6 mb-r">
-                                <!--Featured image-->
-                            {% for service in self.services.all %}
-                                {% image service.service_image fill-500x500 as img %}
-                                <div class="view overlay hm-white-slight">
-                                    <img src="{{ img.url }}">
-                                    <a>
-                                        <div class="mask waves-light"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--/First column-->
-
-                            <!--Second column-->
-                            <div class="col-md-6 mb-r">
-                                <!--Excerpt-->
-                                <h2 class="h2-responsive">{% if service.link %}<a href="{% pageurl service.link %}">{% endif %}{{ service.title }}{% if service.link %}</a>{% endif %}</h2>
-                                <h5 class="h5-responsive">{{ service.description }}</h5>
-                                {% if service.link %}<a href="{% pageurl service.link %}" class="btn btn-outline-primary waves-effect"><i class="fa fa-clone left"></i> Find out more </a>{% endif %}
-                            </div>
-                            <!--/Second column-->
-                            {% endfor %}
+                <!--First column-->
+                <div class="col-md-6 mb-r">
+                    <!--Featured image-->
+                
+                    {% image service.service_image fill-500x500 as img %}
+                    <div class="view overlay hm-white-slight">
+                        <img src="{{ img.url }}" class="img-fluid">
+                        <a>
+                            <div class="mask waves-light"></div>
+                        </a>
+                    </div>
                 </div>
-            {% endif %}
+                <!--/First column-->
+
+                <!--Second column-->
+                <div class="col-md-6 mb-r">
+                    <!--Excerpt-->
+                    <h2 class="h2-responsive">{{ service.title }}</h2>
+                    <h5 class="h5-responsive">{{ service.description }}</h5>
+                    {% if service.link %}<a href="{% pageurl service.link %}" class="btn btn-outline-primary waves-effect"><i class="fa fa-clone left"></i> Find out more </a>{% endif %}
+                </div>
+                <!--/Second column-->
+            </div>
+            {% endfor %}
         </div>
-    </section>
+</section>
+{% endif %}
 {% endblock %}
