@@ -33,7 +33,7 @@
                             <div class="col-md-6 mb-r">
                                 <!--Featured image-->
                             {% for service in self.services.all %}
-                                {% image service.service_image fill-520x500 as img %}
+                                {% image service.service_image fill-500x500 as img %}
                                 <div class="view overlay hm-white-slight">
                                     <img src="{{ img.url }}" class="img-fluid">
                                     <a>
