@@ -96,7 +96,7 @@ def homepage_article_listing(context, count=6):
 
 # Project feed for home page
 @register.inclusion_tag('core/tags/homepage_project_listing.html', takes_context=True)
-def homepage_project_listing(context, count=4):
+def homepage_project_listing(context, count=6):
     project = play_filter(ProjectPage.objects.filter(live=True).order_by('-latest_revision_created_at'),
                        count)
     return {
