@@ -3,7 +3,7 @@
 {% if clients %}
 	<div class="row">
 	    {% for client in clients %}
-	        <div class="col-md-4 mb-r wow fadeInDown img-responsive">
+	        <div class="col-md-3 mb-r wow fadeInDown img-responsive">
 	            {% if client.link %}<a href="{{ client.link }}">{% endif %}
 	                {% image client.image max-250x80 class='img-responsive' %}
 	            {% if client.link %}</a>{% endif %}
