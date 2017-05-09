@@ -881,18 +881,18 @@ text-align: justify;
 }*/
 
 .intro .rich-text p {
-font-size:18px;
+font-size:16px;
 margin-bottom:25px;
 }
 
 .rich-text p,.stream-field p {
 font-size:16px;
-text-align: justify;
+/*text-align: justify;*/
 }
 
 .rich-text h2,.stream-field h2 {
 text-align:left;
-font-size:23px;
+font-size:20px;
 color:#000;
 margin:30px 0 10px;
 }
