@@ -2,7 +2,7 @@
 
 <!-- Complete css addition from style.css -->
 
-<section class="home-hero initial-load" id="home">
+<section class="home-hero initial-load carousel slide carousel-fade carousel-thumbnails" id="home carousel-thumb" data-ride="carousel">
 
     <style>
     {% for heroItem in hero %}
@@ -22,11 +22,11 @@
 
     <!-- background images for features -->
 
-    <div class="feature-images">
+    <div class="feature-images carousel-inner" role="listbox">
         <div class="full-bg-img flex-center">
             {% for heroItem in hero %}
                 {% image heroItem.background max-1800x978 as imgbanner %}
-                <div class="feature-image img-fluid" data-name="{% cycle '1' '2' '3' %}" style="background-image: url({{ imgbanner.url }}); -webkit-background-size: cover;"></div>
+                <div class="feature-image img-fluid carousel-item active" data-name="{% cycle '1' '2' '3' %}" style="background-image: url({{ imgbanner.url }}); -webkit-background-size: cover;"></div>
             {% endfor %}
         </div>
     </div>

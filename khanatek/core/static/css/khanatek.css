@@ -1,16 +1,56 @@
-html,
+html, 
 body
 {
     height: 100%;
-/*    padding:0;
-    margin: 0;*/
 }
+
+/** {
+    margin: 0;
+}*/
 
 body {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
 
+header
+{
+    width: 100%;
+    padding:0;
+    margin: 0;
+}
+
+#main{
+  height:100vh;
+}
+
+#footer {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  /*height: 50px;*/
+}
+
+/*.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -155px; 
+}
+html,
+body
+{
+    height: 100%;
+/*    padding:0;
+    margin: 0;*/
+/*}*/
+
+/*body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+*/
 /*section {
     height: 100%;
     position: relative;
@@ -193,7 +233,7 @@ footer.page-footer {
     overflow-y: scroll;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    float: left;
+    float: center;
     margin-top: 14px;
     z-index: 5;
     width: 100%;
@@ -231,7 +271,7 @@ footer.page-footer {
 }
 .bleed.visible {
     padding: 0;
-    height: calc(100vh - 68px);
+    height: calc(100vh - 70px);
     opacity: 1;
     background: #fff
 }
@@ -283,40 +323,87 @@ footer.page-footer {
 @media (min-width: 768px) {
     .bleed li:hover ul {
         opacity: 1;
-        max-height: 200px;
+        max-height: 400px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1)
+        /*box-shadow: none;*/
     }
 }
 .bleed li:last-child {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1)
 }
-.bleed li ul li .block-subitem:first-of-type {
+/*.bleed li ul li .block-subitem:first-of-type {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1)
-}
+}*/
 .bleed li ul li:last-child {
     border-bottom: none
 }
 @media (min-width: 768px) {
-    .bleed li ul {
+    .bleed li ul {   
         transition: all 0.4s ease;
         position: absolute;
-        z-index: 0;
-        background-color: #fff;
-        width: 200px;
+        z-index: 1000;
+        /*display: none;*/
+        float: center;
+        min-width: 10rem;
+        background-color: #154771;
+        /*width: 250px;*/
         overflow: hidden;
-        max-height: 0;
-        padding: 0 15px 0;
-        left: -15px;
+        /*max-height: 0;*/
+        padding: 0.5rem 0;
+        /*padding: 0 5px 0;*/
+        margin: 0.125rem 0 0;
+        font-size: 1rem;
+        text-align: left;
+        /*list-style: none;*/
+        /*left: -5px;*/
         opacity: 0;
-        top: 56px
+        -webkit-background-clip: padding-box;
+                  background-clip: padding-box;
+        top: 100%
     }
+
+
+/*    .bleed li ul {
+        transition: all 0.4s ease;
+        position: absolute;
+        z-index: 1000;
+*/        /*display: none;*/
+/*        float: left;
+        min-width: 10rem;
+        background-color: #154771;
+*/        /*width: 250px;*/
+        /*overflow: hidden;*/
+        /*max-height: 0;*/
+        /*padding: 0.5rem 0;*/
+        /*padding: 0 5px 0;*/
+        /*margin: 0.125rem 0 0;*/
+/*        font-size: 1rem;
+        text-align: left;
+*/        /*list-style: none;*/
+        /*left: -5px;*/
+/*        opacity: 0;
+        -webkit-background-clip: padding-box;
+                  background-clip: padding-box;
+        top: 100%
+    }
+*/
+
     .bleed li ul li {
         display: block;
-        width: 100%
+        width: 100%;
+        padding: 3px 1.5rem;
+        clear: both;
+        text-align: inherit;
+        white-space: nowrap;
+        /*padding: 0 5px 0;
+        text-align: center;*/
     }
+
     .bleed li ul li a {
         width: 100%;
         border-top: 1px solid rgba(0, 0, 0, 0.1);
+        /*padding: 0 5px 0;
+        text-align: center;*/
         display: block
     }
     .bleed li ul li a:hover:after {
@@ -331,7 +418,7 @@ footer.page-footer {
         transform: translate3d(0, 0, 0);
         opacity: 1;
         text-align: center;
-        float: left;
+        float: center;
         margin-right: 5px;
         margin-bottom: 10px;
         transition: none;
@@ -347,8 +434,8 @@ footer.page-footer {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
         opacity: 10;
-        text-align: left;
-        float: right;
+        text-align: center;
+        float: center;
         margin-right: 20px;
         margin-bottom: 0;
         transition: none;
@@ -379,7 +466,7 @@ footer.page-footer {
 }
 @media (min-width: 768px) {
     .bleed li a {
-        font-size: 14px;
+        font-size: 15px;
         position: relative;
         top: 0
     }

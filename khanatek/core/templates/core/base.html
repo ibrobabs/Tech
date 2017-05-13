@@ -33,7 +33,7 @@
     <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}" />
     <meta property="og:site_name" content="khanatek" />
 
-    <link rel="shortcut icon" href="{% static "khanatek/images/favicon.ico" %}" />
+    <link rel="shortcut icon" href="{% static 'khanatek/images/rsz_1logo.gif' %}">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
@@ -50,7 +50,7 @@
     {% block extra_css %}{% endblock %}
 
 </head>
-    <body class="page-{{ self|content_type }} title-{{ self.title|slugify }} pageid-{{ self.id }} {% block body_class %}{% endblock %}">
+<body class="page-{{ self|content_type }} title-{{ self.title|slugify }} pageid-{{ self.id }} {% block body_class %}{% endblock %}">
 
     <!-- Google Tag Manager -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL5SH5B"
@@ -87,12 +87,12 @@
         </div>
     </nav>
         <!--/.Navbar-->
-    <header>
+    </header>
 
     <main>{% spaceless %}{% block content %}{% endblock %}{% endspaceless %}</main>
 
     <!--Footer-->
-    <footer class="page-footer center-on-small-only">
+    <footer class="page-footer center-on-small-only" id="footer">
 
         <!--Footer Links-->
         <div class="container-fluid">
@@ -107,7 +107,7 @@
 
                 <!--Second column-->
                 <div class="col-md-5 offset-md-1">
-                        <div><a href="/privacy-policy/">Privacy/terms of use</a></div>
+                        <a href="/privacy-policy/">Privacy/terms of use</a>
                     <!-- </ul> -->
                 </div>
                 <!--/.Second column-->
@@ -121,8 +121,8 @@
                 © 2017 Copyright: <a href="http://www.khanatek.com"> Khanatek Technologies Inc </a>
             </div>
         </div>
-        <!--/.Copyright-->
 
+        <!--/.Copyright-->
     </footer>
     <!--/.Footer-->
     {# Global javascript #}
