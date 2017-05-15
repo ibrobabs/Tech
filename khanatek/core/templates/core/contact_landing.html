@@ -5,18 +5,19 @@
 
 <style>
     .about-hero {
-        {% image page.landing_image original as landing_image %}
-        background-image: url("{{ landing_image.url }}");
+        background-repeat: no-repeat;
         background-size: cover cover;
-        margin-top: -100px;
-        margin-bottom: -20px;
+        width:1025px !important;
+        margin-top: -100px !important;
+        margin-bottom: -20px !important;
     }
 </style>
-
-<div class="about-hero">
+{% image page.landing_image original as landing_image %}
+<div class="about-hero" style="background-image: url("{{ landing_image.url }}");">
     <div class="main-content" style="margin-bottom: 150;">
         <div class="contact">
             <form class="contact-form" action="{% pageurl page %}" method="post" id="contact-us-form">
+            {% csrf_token %}
                 <fieldset class="contact-form__group">
                     <div class="container">
                         <div class="content">
@@ -26,7 +27,6 @@
                             </h2>
                         </div>
                     </div>
-                   {% csrf_token %}
                    {{ form.as_p }}
                 </fieldset>    
             </form>
