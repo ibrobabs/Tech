@@ -8,6 +8,10 @@ from .base import *
 
 from decouple import config
 
+from boto.s3.connection import S3Connection
+
+
+
 
 
 # DEBUG = False
@@ -15,6 +19,9 @@ TEMPLATES[0]['OPTIONS']['debug'] = False
 
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
+
+
+s3 = S3Connection(os.environ['AWS_ACCESS_KEY_ID'], os.environ['AWS_SECRET_ACCESS_KEY'])
 
 # Allow all host headers
 ALLOWED_HOSTS = ['khanatek.herokuapp.com']
