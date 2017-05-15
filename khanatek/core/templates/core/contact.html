@@ -7,14 +7,16 @@
     .about-hero {
         {% image page.main_image original as main_image %}
         background-image: url("{{ main_image.url }}");
+        background-repeat: no-repeat;
         background-size: cover cover;
+        padding-top: 30px;
         /*margin-bottom: -40px;*/
     }
 
 </style>
 
 <div class="about-hero">
-    <div class="container" style="padding-top: 190px; padding-bottom: 120px">
+    <div class="container" style="padding-top: 200px; padding-bottom: 120px">
         <div class="row">
             <div class="col-md-10 offset-md-1 fluid">
                 <div class="container">
