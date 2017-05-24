@@ -456,55 +456,223 @@ class AboutPage(Page):
 				#####################
 				#####################
 
-class ServicesPageService(Orderable):
-    page = ParentalKey('core.ServicesPage', related_name='services')
-    title = models.TextField()
-    service_image = models.ForeignKey(
+class ServicePageTagSelect(Orderable):
+    page = ParentalKey('core.ServicePage', related_name='tags')
+    tag = models.ForeignKey(
+        'core.ArticlePageTagList',
+        related_name='service_page_tag_select'
+    )
+
+
+class ServicePageScreenshot(Orderable):
+    page = ParentalKey('core.ServicePage', related_name='screenshots')
+    image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+'
-    )
-    description = models.TextField()
-    link = models.ForeignKey(
-        'core.ProjectPage',
-        related_name='+',
-        blank=True,
-        null=True,
     )
 
     panels = [
-        FieldPanel('title'),
-        FieldPanel('description'),
-        PageChooserPanel('link'),
-        ImageChooserPanel('service_image'),
+        ImageChooserPanel('image'),
     ]
 
 
-class ServicesPage(Page):
-    main_image = models.ForeignKey(
+# class ServicePageAuthor(Orderable):
+#     page = ParentalKey('core.ProjectPage', related_name='related_author')
+#     author = models.ForeignKey(
+#         'core.PersonPage',
+#         null=True,
+#         blank=True,
+#         related_name='+'
+#     )
+
+#     panels = [
+#         PageChooserPanel('author'),
+#     ]
+
+
+class ServicePage(Page):
+    # summary = models.CharField(max_length=255)
+    descriptive_title = models.CharField(max_length=255)
+    intro = RichTextField("Intro", blank=True)
+    body = StreamField([
+        ('h2', CharBlock(icon="title", classname="title")),
+        ('h3', CharBlock(icon="title", classname="title")),
+        ('h4', CharBlock(icon="title", classname="title")),
+        ('intro', RichTextBlock(icon="pilcrow")),
+        ('paragraph', RichTextBlock(icon="pilcrow")),
+        ('aligned_image', ImageBlock(label="Aligned image")),
+        ('wide_image', WideImage(label="Wide image")),
+        ('bustout', BustoutBlock()),
+        ('pullquote', PullQuoteBlock()),
+        ('embed', EmbedBlock(icon="code")),
+        ('markdown', MarkdownBlock(icon="code")),
+    ])
+    homepage_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    heading = models.TextField(blank=True)
-    intro = models.TextField(blank=True)
+    marketing_only = models.BooleanField(default=False, help_text='Display this work item only on marketing landing page')
+    # visit_the_site = models.URLField(blank=True)
 
-    search_fields = Page.search_fields + [
-        index.SearchField('title'),
-        index.SearchField('intro'),
-    ]
+    # show_in_play_menu = models.BooleanField(default=False)
+
+    @property
+    def service_index(self):
+        # Find work index in ancestors
+        for ancestor in reversed(self.get_ancestors()):
+            if isinstance(ancestor.specific, ServiceIndexPage):
+                return ancestor
+
+        # No ancestors are work indexes,
+        # just return first work index in database
+        return ServiceIndexPage.objects.first()
+
+    # @property
+    # def has_authors(self):
+    #     for author in self.related_author.all():
+    #         if author.author:
+    #             return True
 
     content_panels = [
-        FieldPanel('title', classname='full title'),
-        ImageChooserPanel('main_image'),
-        FieldPanel('heading'),
-        FieldPanel('intro', classname='full'),
-        InlinePanel('services', label='Services'),
+        FieldPanel('title', classname="full title"),
+        FieldPanel('descriptive_title'),
+        # InlinePanel('related_author', label="Author"),
+        # FieldPanel('author_left'),
+        # FieldPanel('summary'),
+        FieldPanel('intro', classname="full"),
+        StreamFieldPanel('body'),
+        # StreamFieldPanel('streamfield'),
+        ImageChooserPanel('homepage_image'),
+        InlinePanel('screenshots', label="Screenshots"),
+        InlinePanel('tags', label="Tags"),
+        # FieldPanel('visit_the_site'),
     ]
+
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        # FieldPanel('show_in_play_menu'),
+        FieldPanel('marketing_only'),
+    ]
+
+
+# Project index page
+class ServiceIndexPage(Page):
+    intro = RichTextField(blank=True)
+
+    # show_in_play_menu = models.BooleanField(default=False)
+    hide_popular_tags = models.BooleanField(default=False)
+
+    def get_popular_tags(self):
+        # Get a ValuesQuerySet of tags ordered by most popular
+        popular_tags = ServicePageTagSelect.objects.all().values('tag').annotate(item_count=models.Count('tag')).order_by('-item_count')
+
+        # Return first 10 popular tags as tag objects
+        # Getting them individually to preserve the order
+        return [ArticlePageTagList.objects.get(id=tag['tag']) for tag in popular_tags[:6]]
+
+    @property
+    def services(self):
+        # Get list of work pages that are descendants of this page
+        # and are not marketing only
+        services = ServicePage.objects.filter(
+            live=True,
+            path__startswith=self.path
+        ).exclude(marketing_only=True)
+
+        return services
+
+    def serve(self, request):
+        # Get project pages
+        services = self.services
+
+        # Filter by tag
+        tag = request.GET.get('tag')
+        if tag:
+            services = services.filter(tags__tag__slug=tag)
+
+        # Pagination
+        page = request.GET.get('page')
+        paginator = Paginator(services, 6)  # Show 10 works per page
+        try:
+            services = paginator.page(page)
+        except PageNotAnInteger:
+            services = paginator.page(1)
+        except EmptyPage:
+            services = paginator.page(paginator.num_pages)
+
+        return render(request, self.template, {
+            'self': self,
+            'services': services,
+        })
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('hide_popular_tags'),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        # FieldPanel('show_in_play_menu'),
+    ]
+
+
+
+# class ServicesPageService(Orderable):
+#     page = ParentalKey('core.ServicesPage', related_name='services')
+#     title = models.TextField()
+#     service_image = models.ForeignKey(
+#         'wagtailimages.Image',
+#         null=True,
+#         blank=True,
+#         on_delete=models.SET_NULL,
+#         related_name='+'
+#     )
+#     description = models.TextField()
+#     link = models.ForeignKey(
+#         'core.ProjectPage',
+#         related_name='+',
+#         blank=True,
+#         null=True,
+#     )
+
+#     panels = [
+#         FieldPanel('title'),
+#         FieldPanel('description'),
+#         PageChooserPanel('link'),
+#         ImageChooserPanel('service_image'),
+#     ]
+
+
+# class ServicesPage(Page):
+#     main_image = models.ForeignKey(
+#         'wagtailimages.Image',
+#         null=True,
+#         blank=True,
+#         on_delete=models.SET_NULL,
+#         related_name='+'
+#     )
+#     heading = models.TextField(blank=True)
+#     intro = models.TextField(blank=True)
+
+#     search_fields = Page.search_fields + [
+#         index.SearchField('title'),
+#         index.SearchField('intro'),
+#     ]
+
+#     content_panels = [
+#         FieldPanel('title', classname='full title'),
+#         ImageChooserPanel('main_image'),
+#         FieldPanel('heading'),
+#         FieldPanel('intro', classname='full'),
+#         InlinePanel('services', label='Services'),
+#     ]
 
     			##############################
     			##############################

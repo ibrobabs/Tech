@@ -1,0 +1,26 @@
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+<div class="col-md-4 mb-r wow zoomIn" data-wow-delay="0.4s">
+
+    <!--Collection card-->
+    <div class="card collection-card">
+        <!--Card image-->
+        <div class="view  hm-zoom">
+            {% if image %}
+                {% image image fill-350x350-c100 as background %}
+            <img src="{{ background.url }}" class="img-fluid" alt="">
+            {% endif %}
+
+            <div class="white-text text-center">
+                <div class="stripe">
+                <!-- <h6 class="h6-reponsive">{{ descriptive_title }}</h6> -->
+                    <h4 class="h4-reponsive">{{ title }}</h4>
+                    <a class="btn btn-sm btn-outline-white" href="{% pageurl page %}"><i class="fa fa-clone left"></i> View service</a>
+                </div>
+            </div>
+        </div>
+        <!--/.Card image-->
+    </div>
+    <!--/.Collection card-->
+
+</div>

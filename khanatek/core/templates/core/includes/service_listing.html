@@ -1,0 +1,9 @@
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+<div class="row">
+{% for service in services %}
+    {% include 'core/tags/service_list_item.html' %}
+{% empty %}
+    No services found
+{% endfor %}
+</div>
