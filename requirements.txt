@@ -1,6 +1,6 @@
 appdirs==1.4.3
 beautifulsoup4==4.5.3
-bleach==1.4.3
+bleach==3.1.4
 boto==2.46.1
 ConcurrentLogHandler==0.9.1
 contextlib2==0.5.4
