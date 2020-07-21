@@ -42,7 +42,7 @@ sqlparse==0.2.3
 static3==0.7.0
 Unidecode==0.4.20
 urllib3==1.20
-wagtail==2.7.2
+wagtail==2.7.4
 
 wagtailfontawesome==1.0.6
 wagtailmodeladmin==2.5.7
