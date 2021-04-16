@@ -9,7 +9,7 @@ dj-static==0.0.6
 Django==1.10.7
 django-appconf==1.0.2
 django-compressor==2.1.1
-django-debug-toolbar==1.7
+django-debug-toolbar==1.11.1
 django-modelcluster==3.0.1
 django-redis==4.7.0
 django-redis-cache==1.7.1
