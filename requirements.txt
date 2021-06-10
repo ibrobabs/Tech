@@ -6,7 +6,7 @@ ConcurrentLogHandler==0.9.1
 contextlib2==0.5.4
 dj-database-url==0.4.2
 dj-static==0.0.6
-Django==1.10.7
+Django==2.2.24
 django-appconf==1.0.2
 django-compressor==2.1.1
 django-debug-toolbar==1.7
