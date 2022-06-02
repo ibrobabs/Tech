@@ -21,7 +21,7 @@ djangorestframework==3.6.2
 elasticsearch==5.3.0
 Embedly==0.5.0
 gunicorn==19.7.1
-html5lib==0.9999999
+html5lib==0.99999999
 httplib2==0.10.3
 Markdown==2.6.2
 olefile==0.44
